@@ -9,6 +9,7 @@ const APP_MOBILE_REACT_WRAPPER_APP_HANDOFF_SCHEMA_VERSION = 'mobile-react-wrappe
 const APP_MOBILE_EXTERNAL_OPTIONAL_OUTPUT_SCHEMA_VERSION = 'mobile-external-optional-output-v1';
 const APP_MOBILE_EXTERNAL_AI_TASK_PACKET_SCHEMA_VERSION = 'mobile-external-ai-task-packet-v1';
 const APP_MOBILE_OUTPUT_MODE_CONFIG_SCHEMA_VERSION = 'mobile-output-mode-config-v1';
+const APP_MOBILE_PWA_READINESS_SCHEMA_VERSION = 'mobile-pwa-readiness-v1';
 const APP_MOBILE_LATER_PLATFORM_INPUT_PACKET_SCHEMA_VERSION = 'mobile-later-platform-input-packet-v1';
 const APP_MOBILE_WRAPPER_BUNDLE_MANIFEST_SCHEMA_VERSION = 'mobile-wrapper-bundle-manifest-v1';
 const APP_MOBILE_OUTPUT_MODES = ['mtool_no_code', 'external_no_code', 'hybrid'];
@@ -78,6 +79,94 @@ function app_mobile_wrapper_target_emit_output_mode_config(array $handoff, strin
     }
 
     $packageResult = app_mobile_wrapper_target_build_output_mode_config($handoff, $mode);
+    if (!$packageResult['ok'] || !is_array($packageResult['package'])) {
+        return app_mobile_wrapper_target_emit_result(false, $packageResult['error'], $normalizedTargetDir, [], $packageResult['validation']);
+    }
+
+    if (file_exists($normalizedTargetDir) && !is_dir($normalizedTargetDir)) {
+        return app_mobile_wrapper_target_emit_result(false, 'target path exists and is not a directory', $normalizedTargetDir, [], $packageResult['validation']);
+    }
+    if (!is_dir($normalizedTargetDir) && !mkdir($normalizedTargetDir, 0777, true)) {
+        return app_mobile_wrapper_target_emit_result(false, 'failed to create target directory', $normalizedTargetDir, [], $packageResult['validation']);
+    }
+
+    $files = $packageResult['package']['files'] ?? [];
+    if (!is_array($files)) {
+        return app_mobile_wrapper_target_emit_result(false, 'package files are invalid', $normalizedTargetDir, [], $packageResult['validation']);
+    }
+
+    $emitted = [];
+    foreach ($files as $relativePath => $content) {
+        $relativePath = (string) $relativePath;
+        if ($relativePath === '' || str_contains($relativePath, '..') || str_starts_with($relativePath, DIRECTORY_SEPARATOR)) {
+            return app_mobile_wrapper_target_emit_result(false, 'package file path is not safe', $normalizedTargetDir, $emitted, $packageResult['validation']);
+        }
+        $path = $normalizedTargetDir . DIRECTORY_SEPARATOR . $relativePath;
+        if (file_exists($path)) {
+            return app_mobile_wrapper_target_emit_result(false, 'package file already exists: ' . $relativePath, $normalizedTargetDir, $emitted, $packageResult['validation']);
+        }
+        $text = is_array($content)
+            ? app_mobile_wrapper_target_json_text($content)
+            : (string) $content;
+        if (file_put_contents($path, $text) === false) {
+            return app_mobile_wrapper_target_emit_result(false, 'failed to write package file: ' . $relativePath, $normalizedTargetDir, $emitted, $packageResult['validation']);
+        }
+        $emitted[] = $relativePath;
+    }
+
+    sort($emitted, SORT_STRING);
+    return app_mobile_wrapper_target_emit_result(true, '', $normalizedTargetDir, $emitted, $packageResult['validation']);
+}
+
+/**
+ * Build PWA readiness metadata/checklist for web/no-code and React/Web wrapper
+ * consumers. This does not generate a manifest, service worker, offline sync, or
+ * external app project.
+ *
+ * @param array<string,mixed> $handoff
+ * @return array{ok:bool,error:string,package:array<string,mixed>|null,validation:array<string,mixed>}
+ */
+function app_mobile_wrapper_target_build_pwa_readiness(array $handoff): array
+{
+    $validation = app_mobile_app_handoff_validate($handoff);
+    if (($validation['ready'] ?? false) !== true) {
+        return [
+            'ok' => false,
+            'error' => 'mobile app handoff packet is not ready',
+            'package' => null,
+            'validation' => $validation,
+        ];
+    }
+
+    $packet = app_mobile_wrapper_target_pwa_readiness_from_handoff($handoff);
+
+    return [
+        'ok' => true,
+        'error' => '',
+        'package' => [
+            'path_hint' => 'pwa-readiness/',
+            'mutation_performed' => false,
+            'files' => [
+                'pwa-readiness.json' => $packet,
+                'PWA-READINESS.md' => app_mobile_wrapper_target_pwa_readiness_markdown($packet),
+            ],
+        ],
+        'validation' => $validation,
+    ];
+}
+
+/**
+ * @param array<string,mixed> $handoff
+ * @return array{ok:bool,error:string,target_dir:string,files:list<string>,validation:array<string,mixed>}
+ */
+function app_mobile_wrapper_target_emit_pwa_readiness(array $handoff, string $targetDir): array
+{
+    $normalizedTargetDir = rtrim($targetDir, DIRECTORY_SEPARATOR);
+    if ($normalizedTargetDir === '' || $normalizedTargetDir === '.' || $normalizedTargetDir === DIRECTORY_SEPARATOR) {
+        return app_mobile_wrapper_target_emit_result(false, 'target directory is not a controlled artifact directory', $normalizedTargetDir, [], []);
+    }
+
+    $packageResult = app_mobile_wrapper_target_build_pwa_readiness($handoff);
     if (!$packageResult['ok'] || !is_array($packageResult['package'])) {
         return app_mobile_wrapper_target_emit_result(false, $packageResult['error'], $normalizedTargetDir, [], $packageResult['validation']);
     }
@@ -652,6 +741,16 @@ function app_mobile_wrapper_target_build_bundle_manifest(array $handoff, string 
         ];
     }
 
+    $pwa = app_mobile_wrapper_target_build_pwa_readiness($handoff);
+    if (!$pwa['ok'] || !is_array($pwa['package'])) {
+        return [
+            'ok' => false,
+            'error' => $pwa['error'],
+            'package' => null,
+            'validation' => $pwa['validation'],
+        ];
+    }
+
     $platforms = app_mobile_wrapper_target_build_later_platform_input_packets($handoff);
     if (!$platforms['ok'] || !is_array($platforms['package'])) {
         return [
@@ -662,7 +761,7 @@ function app_mobile_wrapper_target_build_bundle_manifest(array $handoff, string 
         ];
     }
 
-    $manifest = app_mobile_wrapper_target_bundle_manifest_from_packages($handoff, $c1['package'], $react['package'], $external['package'], $aiTask['package'], $outputMode['package'], $platforms['package']);
+    $manifest = app_mobile_wrapper_target_bundle_manifest_from_packages($handoff, $c1['package'], $react['package'], $external['package'], $aiTask['package'], $outputMode['package'], $pwa['package'], $platforms['package']);
 
     return [
         'ok' => true,
@@ -931,6 +1030,17 @@ function app_mobile_wrapper_target_emit_sample28_output_mode_config(string $targ
         app_mobile_wrapper_target_sample28_c1_handoff(),
         $targetDir,
         $mode,
+    );
+}
+
+/**
+ * @return array{ok:bool,error:string,target_dir:string,files:list<string>,validation:array<string,mixed>}
+ */
+function app_mobile_wrapper_target_emit_sample28_pwa_readiness(string $targetDir): array
+{
+    return app_mobile_wrapper_target_emit_pwa_readiness(
+        app_mobile_wrapper_target_sample28_c1_handoff(),
+        $targetDir,
     );
 }
 
@@ -1507,7 +1617,12 @@ function app_mobile_wrapper_target_output_mode_config_from_handoff(array $handof
     $targetExtensions = [
         'react_web_capacitor' => [
             'status' => 'supported_first_external_target',
-            'artifacts' => ['external_optional_output', 'ai_task_packet'],
+            'artifacts' => ['external_optional_output', 'ai_task_packet', 'pwa_readiness'],
+            'native_project_generation' => false,
+        ],
+        'pwa_readiness' => [
+            'status' => 'supported_delivery_runtime_metadata',
+            'artifacts' => ['pwa_readiness'],
             'native_project_generation' => false,
         ],
         'flutter' => [
@@ -1531,18 +1646,18 @@ function app_mobile_wrapper_target_output_mode_config_from_handoff(array $handof
         'surface_policy' => [
             'mtool_no_code' => [
                 'primary_surface' => 'Mtool generated web/no-code/runtime output',
-                'required_artifacts' => ['mobile_app_handoff', 'source_artifact_index', 'runtime_readiness_metadata'],
+                'required_artifacts' => ['mobile_app_handoff', 'source_artifact_index', 'runtime_readiness_metadata', 'pwa_readiness'],
                 'external_artifacts' => [],
             ],
             'external_no_code' => [
                 'primary_surface' => 'external app/framework/code-builder handoff',
-                'required_artifacts' => ['mobile_app_handoff', 'external_optional_output', 'ai_task_packet'],
-                'external_artifacts' => ['react_web_capacitor'],
+                'required_artifacts' => ['mobile_app_handoff', 'external_optional_output', 'ai_task_packet', 'pwa_readiness'],
+                'external_artifacts' => ['react_web_capacitor', 'pwa_readiness'],
             ],
             'hybrid' => [
                 'primary_surface' => 'Mtool output plus explicit external handoff',
-                'required_artifacts' => ['mobile_app_handoff', 'runtime_readiness_metadata', 'external_optional_output', 'ai_task_packet'],
-                'external_artifacts' => ['react_web_capacitor'],
+                'required_artifacts' => ['mobile_app_handoff', 'runtime_readiness_metadata', 'external_optional_output', 'ai_task_packet', 'pwa_readiness'],
+                'external_artifacts' => ['react_web_capacitor', 'pwa_readiness'],
             ],
         ],
         'selected_artifact_keys' => app_mobile_wrapper_target_output_mode_artifact_keys($mode),
@@ -1578,9 +1693,9 @@ function app_mobile_wrapper_target_output_mode_config_from_handoff(array $handof
 function app_mobile_wrapper_target_output_mode_artifact_keys(string $mode): array
 {
     return match ($mode) {
-        'mtool_no_code' => ['c1_wrapper_readiness', 'react_wrapper_app_handoff'],
-        'external_no_code' => ['external_optional_output', 'ai_task_packet'],
-        default => ['c1_wrapper_readiness', 'react_wrapper_app_handoff', 'external_optional_output', 'ai_task_packet'],
+        'mtool_no_code' => ['c1_wrapper_readiness', 'react_wrapper_app_handoff', 'pwa_readiness'],
+        'external_no_code' => ['external_optional_output', 'ai_task_packet', 'pwa_readiness'],
+        default => ['c1_wrapper_readiness', 'react_wrapper_app_handoff', 'external_optional_output', 'ai_task_packet', 'output_mode_config', 'pwa_readiness'],
     };
 }
 
@@ -1611,6 +1726,142 @@ function app_mobile_wrapper_target_output_mode_config_markdown(array $config): s
     foreach (($config['forbidden_without_explicit_confirmation'] ?? []) as $item) {
         $lines[] = '- `' . (string) $item . '`';
     }
+    $lines[] = '';
+    return implode("\n", $lines);
+}
+
+/**
+ * @param array<string,mixed> $handoff
+ * @return array<string,mixed>
+ */
+function app_mobile_wrapper_target_pwa_readiness_from_handoff(array $handoff): array
+{
+    $project = is_array($handoff['project'] ?? null) ? $handoff['project'] : [];
+    $sourceArtifacts = is_array($handoff['source_artifacts'] ?? null) ? $handoff['source_artifacts'] : [];
+    $actions = is_array($handoff['actions'] ?? null) ? $handoff['actions'] : [];
+
+    return [
+        'schema_version' => APP_MOBILE_PWA_READINESS_SCHEMA_VERSION,
+        'target' => 'pwa_readiness',
+        'mutation_performed' => false,
+        'project' => $project,
+        'source_artifacts' => $sourceArtifacts,
+        'readiness_modes' => [
+            'pwa_disabled',
+            'pwa_installable_online_only',
+            'pwa_static_cache_only',
+            'pwa_sync_contract_required',
+        ],
+        'recommended_mode' => 'pwa_static_cache_only',
+        'app_manifest_requirements' => [
+            'app_name_required' => true,
+            'short_name_required' => true,
+            'icons_required' => true,
+            'theme_color_required' => true,
+            'background_color_required' => true,
+            'start_url_required' => true,
+            'display_mode_required' => true,
+            'generated_by_mtool' => false,
+        ],
+        'service_worker_policy' => [
+            'generated_by_mtool' => false,
+            'static_shell_cache_allowed' => true,
+            'api_cache_default' => 'not_cacheable',
+            'mutation_cache_allowed' => false,
+            'update_strategy_required' => true,
+            'scope_must_be_explicit' => true,
+        ],
+        'storage_policy' => [
+            'browser_persistent_token_storage_allowed' => false,
+            'refresh_token_browser_storage_allowed' => false,
+            'business_data_persistent_storage_allowed' => false,
+            'session_storage_allowed_for_session_state' => true,
+            'native_secure_storage_delegated_to_external_wrapper' => true,
+        ],
+        'offline_policy' => [
+            'offline_sync_default' => false,
+            'offline_mutation_allowed' => false,
+            'offline_business_data_read_allowed' => false,
+            'sync_contract_required_for_offline_data' => true,
+            'fallback_ui_required' => true,
+        ],
+        'api_cacheability' => [
+            'read_only_endpoints_cacheable_only_when_explicit' => true,
+            'mutating_actions_online_only' => true,
+            'validation_errors_not_success_state' => true,
+            'auth_failures_trigger_reauth' => true,
+            'network_failures_map_to_offline_unavailable_state' => true,
+        ],
+        'action_summary' => [
+            'action_count' => count($actions),
+            'mutating_action_count' => count(array_filter($actions, static fn (array $action): bool => (bool) ($action['mutates'] ?? false))),
+            'mutations_online_only' => true,
+        ],
+        'external_owner_owns' => [
+            'web app manifest file',
+            'service worker implementation',
+            'cache strategy implementation',
+            'PWA install QA',
+            'browser storage implementation',
+            'offline sync implementation if separately contracted',
+        ],
+        'mtool_owns' => [
+            'readiness metadata',
+            'source artifact refs',
+            'server authority boundary',
+            'offline/sync non-goals',
+            'validation checklist',
+        ],
+        'forbidden_without_explicit_artifact' => [
+            'service_worker_generation',
+            'offline_sync',
+            'business_data_cache',
+            'refresh_token_persistence',
+            'background_sync',
+            'push_notifications',
+            'automatic_install_prompt',
+        ],
+        'validation' => [
+            'manifest_fields_reviewed' => false,
+            'service_worker_scope_reviewed' => false,
+            'cache_policy_reviewed' => false,
+            'offline_sync_contract_present' => false,
+            'safe_default' => 'online APIs plus optional static-shell cache only',
+        ],
+    ];
+}
+
+/** @param array<string,mixed> $packet */
+function app_mobile_wrapper_target_pwa_readiness_markdown(array $packet): string
+{
+    $lines = [
+        '# PWA Readiness',
+        '',
+        '- Schema: `' . (string) ($packet['schema_version'] ?? '') . '`',
+        '- Recommended mode: `' . (string) ($packet['recommended_mode'] ?? '') . '`',
+        '',
+        '## Readiness modes',
+        '',
+    ];
+    foreach (($packet['readiness_modes'] ?? []) as $mode) {
+        $lines[] = '- `' . (string) $mode . '`';
+    }
+    $lines[] = '';
+    $lines[] = '## External owner owns';
+    $lines[] = '';
+    foreach (($packet['external_owner_owns'] ?? []) as $item) {
+        $lines[] = '- ' . (string) $item;
+    }
+    $lines[] = '';
+    $lines[] = '## Forbidden without explicit artifact';
+    $lines[] = '';
+    foreach (($packet['forbidden_without_explicit_artifact'] ?? []) as $item) {
+        $lines[] = '- `' . (string) $item . '`';
+    }
+    $lines[] = '';
+    $lines[] = '## Safe default';
+    $lines[] = '';
+    $lines[] = (string) ($packet['validation']['safe_default'] ?? '');
     $lines[] = '';
     return implode("\n", $lines);
 }
@@ -1696,6 +1947,7 @@ function app_mobile_wrapper_target_later_platform_packets_markdown(array $packet
  * @param array<string,mixed> $externalPackage
  * @param array<string,mixed> $aiTaskPackage
  * @param array<string,mixed> $outputModePackage
+ * @param array<string,mixed> $pwaPackage
  * @param array<string,mixed> $platformsPackage
  * @return array<string,mixed>
  */
@@ -1706,6 +1958,7 @@ function app_mobile_wrapper_target_bundle_manifest_from_packages(
     array $externalPackage,
     array $aiTaskPackage,
     array $outputModePackage,
+    array $pwaPackage,
     array $platformsPackage,
 ): array {
     return [
@@ -1718,6 +1971,7 @@ function app_mobile_wrapper_target_bundle_manifest_from_packages(
             'external_optional_output',
             'ai_task_packet',
             'output_mode_config',
+            'pwa_readiness',
             'later_platform_input_packets',
         ],
         'artifacts' => [
@@ -1750,6 +2004,12 @@ function app_mobile_wrapper_target_bundle_manifest_from_packages(
                 'path_hint' => (string) ($outputModePackage['path_hint'] ?? ''),
                 'files' => array_values(array_map('strval', array_keys(is_array($outputModePackage['files'] ?? null) ? $outputModePackage['files'] : []))),
                 'purpose' => 'selected mobile output mode and artifact map for users and AI consumers',
+            ],
+            [
+                'artifact_key' => 'pwa_readiness',
+                'path_hint' => (string) ($pwaPackage['path_hint'] ?? ''),
+                'files' => array_values(array_map('strval', array_keys(is_array($pwaPackage['files'] ?? null) ? $pwaPackage['files'] : []))),
+                'purpose' => 'PWA installability, cache, storage, and offline readiness metadata/checklist',
             ],
             [
                 'artifact_key' => 'later_platform_input_packets',

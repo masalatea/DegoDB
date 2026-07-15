@@ -290,6 +290,7 @@ final class MobileWrapperTargetTest extends TestCase
         self::assertContains('c1_wrapper_readiness', $config['selected_artifact_keys'] ?? []);
         self::assertContains('external_optional_output', $config['selected_artifact_keys'] ?? []);
         self::assertContains('ai_task_packet', $config['selected_artifact_keys'] ?? []);
+        self::assertContains('pwa_readiness', $config['selected_artifact_keys'] ?? []);
         self::assertContains('external_outputs_are_additive_to_mtool_no_code', $config['warnings'] ?? []);
         self::assertContains('cap_sync', $config['forbidden_without_explicit_confirmation'] ?? []);
 
@@ -305,7 +306,7 @@ final class MobileWrapperTargetTest extends TestCase
         self::assertTrue($result['ok'], $result['error']);
         $config = $result['package']['files']['output-mode-config.json'];
         self::assertSame('external_no_code', $config['selected_mode'] ?? '');
-        self::assertSame(['external_optional_output', 'ai_task_packet'], $config['selected_artifact_keys'] ?? []);
+        self::assertSame(['external_optional_output', 'ai_task_packet', 'pwa_readiness'], $config['selected_artifact_keys'] ?? []);
     }
 
     public function testSample28OutputModeConfigEmitsOnlyConfigFiles(): void
@@ -325,6 +326,49 @@ final class MobileWrapperTargetTest extends TestCase
 
         $config = json_decode((string) file_get_contents($targetDir . '/output-mode-config.json'), true, 512, JSON_THROW_ON_ERROR);
         self::assertSame('external_no_code', $config['selected_mode'] ?? '');
+    }
+
+    public function testBuildsPwaReadinessMetadataWithoutGeneratingPwaFiles(): void
+    {
+        $result = app_mobile_wrapper_target_build_pwa_readiness($this->packet());
+
+        self::assertTrue($result['ok'], $result['error']);
+        self::assertIsArray($result['package']);
+        self::assertArrayHasKey('pwa-readiness.json', $result['package']['files']);
+        self::assertArrayHasKey('PWA-READINESS.md', $result['package']['files']);
+
+        $packet = $result['package']['files']['pwa-readiness.json'];
+        self::assertSame('mobile-pwa-readiness-v1', $packet['schema_version'] ?? '');
+        self::assertSame('pwa_static_cache_only', $packet['recommended_mode'] ?? '');
+        self::assertContains('pwa_installable_online_only', $packet['readiness_modes'] ?? []);
+        self::assertFalse($packet['service_worker_policy']['generated_by_mtool'] ?? true);
+        self::assertSame('not_cacheable', $packet['service_worker_policy']['api_cache_default'] ?? '');
+        self::assertFalse($packet['storage_policy']['browser_persistent_token_storage_allowed'] ?? true);
+        self::assertFalse($packet['offline_policy']['offline_sync_default'] ?? true);
+        self::assertTrue($packet['offline_policy']['sync_contract_required_for_offline_data'] ?? false);
+        self::assertContains('service_worker_generation', $packet['forbidden_without_explicit_artifact'] ?? []);
+        self::assertContains('offline_sync', $packet['forbidden_without_explicit_artifact'] ?? []);
+
+        $markdown = $result['package']['files']['PWA-READINESS.md'];
+        self::assertStringContainsString('Recommended mode: `pwa_static_cache_only`', $markdown);
+        self::assertStringContainsString('`offline_sync`', $markdown);
+    }
+
+    public function testSample28PwaReadinessEmitsOnlyReadinessFiles(): void
+    {
+        $targetDir = $this->tempDir('sample28-pwa-readiness');
+
+        $result = app_mobile_wrapper_target_emit_sample28_pwa_readiness($targetDir);
+
+        self::assertTrue($result['ok'], $result['error']);
+        self::assertSame(['PWA-READINESS.md', 'pwa-readiness.json'], $result['files']);
+        self::assertFileExists($targetDir . '/pwa-readiness.json');
+        self::assertFileExists($targetDir . '/PWA-READINESS.md');
+        self::assertFileDoesNotExist($targetDir . '/manifest.webmanifest');
+        self::assertFileDoesNotExist($targetDir . '/service-worker.js');
+        self::assertFileDoesNotExist($targetDir . '/package.json');
+        self::assertFileDoesNotExist($targetDir . '/ios');
+        self::assertFileDoesNotExist($targetDir . '/android');
     }
 
     public function testSample28ReactWrapperAppHandoffEmitsOnlyProofFiles(): void
@@ -430,6 +474,23 @@ final class MobileWrapperTargetTest extends TestCase
         self::assertSame('external_no_code', $result['output_mode']);
         self::assertSame(
             'work/source-outputs/SAMPLE28/MOBILE-WRAPPER-TARGET/output-mode-config',
+            $result['target_dir'],
+        );
+    }
+
+    public function testCliParserAcceptsPwaReadinessArtifact(): void
+    {
+        $result = app_cli_mobile_wrapper_target_parse_args([
+            'create_mobile_wrapper_target.php',
+            '--sample=sample28',
+            '--artifact=pwa-readiness',
+            '--target-dir=work/source-outputs/SAMPLE28/MOBILE-WRAPPER-TARGET/pwa-readiness',
+        ]);
+
+        self::assertTrue($result['ok'], $result['error']);
+        self::assertSame('pwa-readiness', $result['artifact']);
+        self::assertSame(
+            'work/source-outputs/SAMPLE28/MOBILE-WRAPPER-TARGET/pwa-readiness',
             $result['target_dir'],
         );
     }
@@ -583,7 +644,7 @@ final class MobileWrapperTargetTest extends TestCase
         $manifest = $result['package']['files']['mobile-wrapper-bundle-manifest.json'];
         self::assertSame('mobile-wrapper-bundle-manifest-v1', $manifest['schema_version'] ?? '');
         self::assertSame(
-            ['c1_wrapper_readiness', 'react_wrapper_app_handoff', 'external_optional_output', 'ai_task_packet', 'output_mode_config', 'later_platform_input_packets'],
+            ['c1_wrapper_readiness', 'react_wrapper_app_handoff', 'external_optional_output', 'ai_task_packet', 'output_mode_config', 'pwa_readiness', 'later_platform_input_packets'],
             $manifest['artifact_order'] ?? [],
         );
         self::assertSame('external_optional_output', $manifest['artifacts'][2]['artifact_key'] ?? '');
@@ -593,6 +654,8 @@ final class MobileWrapperTargetTest extends TestCase
         self::assertContains('input/external-output.json', $manifest['artifacts'][3]['files'] ?? []);
         self::assertSame('output_mode_config', $manifest['artifacts'][4]['artifact_key'] ?? '');
         self::assertContains('output-mode-config.json', $manifest['artifacts'][4]['files'] ?? []);
+        self::assertSame('pwa_readiness', $manifest['artifacts'][5]['artifact_key'] ?? '');
+        self::assertContains('pwa-readiness.json', $manifest['artifacts'][5]['files'] ?? []);
         self::assertContains('Flutter project', $manifest['not_generated_by_mtool'] ?? []);
         self::assertContains('React Native project', $manifest['not_generated_by_mtool'] ?? []);
         self::assertContains('Capacitor project', $manifest['not_generated_by_mtool'] ?? []);

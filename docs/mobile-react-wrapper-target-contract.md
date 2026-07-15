@@ -185,6 +185,26 @@ Supported modes are:
 
 This is a selection/config packet only. It emits `output-mode-config.json` and `OUTPUT-MODE-CONFIG.md`; it does not create app source, initialize Capacitor, install dependencies, or overwrite existing files.
 
+## PWA readiness artifact / PWA readiness artifact
+
+The `pwa-readiness` artifact records installability, cache, storage, and offline-readiness metadata for Mtool web/no-code and React/Web wrapper consumers.
+
+```sh
+php mtool/scripts/create_mobile_wrapper_target.php \
+  --sample=sample28 \
+  --artifact=pwa-readiness \
+  --target-dir=work/source-outputs/SAMPLE28/MOBILE-WRAPPER-TARGET/pwa-readiness
+```
+
+It emits only:
+
+```text
+pwa-readiness.json
+PWA-READINESS.md
+```
+
+This is metadata/checklist output. It does not generate `manifest.webmanifest`, a service worker, background sync, offline sync, push notifications, app source code, or native project files.
+
 See [External No-Code Output](external-no-code-output.md) for the stable field guide.
 
 ## Boundary details / boundary details

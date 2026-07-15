@@ -72,6 +72,35 @@ The config packet records:
 
 It does not generate an app project, install dependencies, initialize native tooling, or overwrite existing app files.
 
+## PWA readiness artifact / PWA readiness artifact
+
+Mtool can emit a PWA readiness metadata/checklist packet:
+
+```sh
+php mtool/scripts/create_mobile_wrapper_target.php \
+  --sample=sample28 \
+  --artifact=pwa-readiness \
+  --target-dir=work/source-outputs/SAMPLE28/MOBILE-WRAPPER-TARGET/pwa-readiness
+```
+
+The artifact emits only:
+
+```text
+pwa-readiness.json
+PWA-READINESS.md
+```
+
+It records:
+
+- app manifest requirements;
+- service worker/cache policy expectations;
+- browser storage policy;
+- offline/sync policy;
+- API cacheability rules;
+- forbidden behavior without an explicit artifact.
+
+It does not generate `manifest.webmanifest`, `service-worker.js`, offline sync, push notifications, background sync, app source code, or native project files.
+
 ## Required artifacts by mode / mode別必須artifact
 
 ### `mtool_no_code`
@@ -142,6 +171,7 @@ Validation should fail or warn when:
 - signing/store submission is implied;
 - AI/code-builder task packet lacks confirmation-required and forbidden-guess lists.
 - output mode is not one of `mtool_no_code`, `external_no_code`, or `hybrid`.
+- PWA readiness implies offline sync without an explicit sync contract.
 
 ## User-facing wording / UI文言
 

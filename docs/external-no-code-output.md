@@ -51,6 +51,14 @@ output-mode-config/
   OUTPUT-MODE-CONFIG.md
 ```
 
+The companion PWA readiness artifact emits only:
+
+```text
+pwa-readiness/
+  pwa-readiness.json
+  PWA-READINESS.md
+```
+
 It must not create:
 
 - `package.json`;
@@ -89,6 +97,15 @@ php mtool/scripts/create_mobile_wrapper_target.php \
   --artifact=output-mode-config \
   --output-mode=external_no_code \
   --target-dir=work/source-outputs/SAMPLE28/MOBILE-WRAPPER-TARGET/output-mode-config
+```
+
+PWA readiness:
+
+```sh
+php mtool/scripts/create_mobile_wrapper_target.php \
+  --sample=sample28 \
+  --artifact=pwa-readiness \
+  --target-dir=work/source-outputs/SAMPLE28/MOBILE-WRAPPER-TARGET/pwa-readiness
 ```
 
 From a handoff file:
@@ -164,6 +181,8 @@ This makes the optional external output discoverable without making it mandatory
 The companion AI task packet is included as `ai_task_packet`. It is a pending, confirmation-driven packet for Codex / Claude style workflows. It does not execute an AI, install dependencies, initialize Capacitor, write app files, run native builds, sign apps, or submit stores.
 
 The output mode config is included as `output_mode_config`. It lets users and AI consumers distinguish `mtool_no_code`, `external_no_code`, and `hybrid` before deciding which artifact path to follow.
+
+The PWA readiness packet is included as `pwa_readiness`. It gives Mtool web/no-code and React/Web wrapper consumers installability, cache, storage, and offline-readiness metadata without generating a web manifest, service worker, offline sync implementation, or app project.
 
 ## AI task packet / AI task packet
 
