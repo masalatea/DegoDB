@@ -61,6 +61,8 @@
   - RSS-3 realtime contract。WebSocket-first event/command envelope、`state.updated`、membership/room/heartbeat/reconnect events、subscribe/update/ping commands、reconnect/latest-fetch、SSE + HTTP fallback、polling fallback を定義。Status: `RSS_3_DONE`。
 - `2026-0715-shared-state-sync-node-server-input-packet.md`
   - RSS-4 Node.js sync server input packet。別 runtime の Node.js sync server に渡す `sync-server-input.json` / `SYNC-SERVER-INPUT.md` の packet shape、backend integration、route/auth/state/event/fallback/validation、forbidden implicit actions を定義。Status: `RSS_4_DONE`。
+- `2026-0715-shared-state-sync-server-input-next-selection.md`
+  - RSS-5 次slice選定。Mtool artifact emissionへ直行せず、まず `sync-server-input.json` の static/sample consumer fixture を作り、外部Node.js ownerが読める形を検証してから実装へ進む判断。Status: `RSS_5_DONE_STATIC_FIXTURE_FIRST`。
 - `2026-0715-external-framework-optional-output-boundary-check-plan.md`
   - 既に作った Mtool 独自 no-code output を置換する計画ではなく、外部 FE/no-code/app framework を optional output target として扱う boundary check 計画。`mtool_no_code` は supported baseline として維持し、Mtool metadata / validation / server authority / custom extension 境界を保ったまま `external_no_code` / `hybrid` をどう出すか確認する。Status: `REPOSITIONED_AS_OPTIONAL_OUTPUT`。
 - `2026-0715-mtool-no-code-external-framework-full-coverage-check.md`
