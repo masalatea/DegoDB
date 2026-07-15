@@ -19,7 +19,7 @@ When someone asks for "the plan list", answer from this section first. / 「計�
 - RSS 後の bundle / manifest / validation checklist 整理は完了済み。
 - 外部 consumer handoff readiness と AI-assisted external app handoff checklist は完了済み。
 - 全体整理 pass 1〜5 の初回周回は完了済み。
-- 次は、24時間で消えるURL room chat site sample の first slice を確認し、次の site/domain slice またはPR checkpointを選ぶ。
+- 次は、24時間で消えるURL room chat site sample の HTTP route validation を確認し、次の site/domain slice またはPR checkpointを選ぶ。
 
 Current main status:
 
@@ -27,7 +27,7 @@ Current main status:
 - The post-RSS bundle / manifest / validation checklist organization is complete.
 - External consumer handoff readiness and the AI-assisted external app handoff checklist are complete.
 - The first multi-pass cleanup sequence, passes 1 through 5, is complete.
-- Next is reviewing the first slice of a URL-room ephemeral chat site sample and selecting the next site/domain slice or PR checkpoint.
+- Next is reviewing HTTP route validation for the URL-room ephemeral chat site sample and selecting the next site/domain slice or PR checkpoint.
 
 | Order | Work unit / 作業の塊 | Commit unit / コミット単位 | Status | Next decision / 次の判断 |
 | --- | --- | --- | --- | --- |
@@ -36,8 +36,8 @@ Current main status:
 | 954 | Shared-state sync Mtool artifact linkage / shared-state sync Mtool artifact linkage | Prove sample38 can consume Mtool CLI-emitted `sync-server-input.json` and `sync-client-input.json`, not only checked-in fixtures | `FIRST_SLICE_DONE` | `validate-mtool-artifact-linkage.mjs` emits server/client packets to a temporary directory, consumes them in sample38, and removes the temp files; no dependency install or production server |
 | 955 | Shared-state chat domain sample / shared-state chat domain sample | Add a chat-like domain sample on top of sample38 that validates message append, revision conflict, room-scoped fanout, cross-room isolation, and secret-free events | `FIRST_SLICE_DONE` | `sample39-shared-state-chat-demo` is a domain sample, not a production chat app, UI, persistence layer, moderation system, or real WebSocket server |
 | 956 | Shared-state chat image attachment metadata / shared-state chat image attachment metadata | Add sample-only ephemeral image storage and sync only image attachment metadata through the chat shared state | `FIRST_SLICE_DONE` | Image bytes are stored under a temporary local directory and removed after validation; events contain metadata only, not raw image bytes |
-| 957 | Ephemeral room chat site sample / 24時間で消えるroom chat site sample | Add a cut-out-friendly sample site where URL-named rooms are recreated on access, image attachments are stored outside message state, messages expire after 24h, inactive rooms expire after 7d, and room registry can remain | `FIRST_SLICE_DONE` | `sample40-ephemeral-room-chat-site` is self-contained and dependency-free; first slice uses JSON file plus ephemeral image directory, not production DB/storage/auth/WebSocket |
-| 958 | Ephemeral chat / shared-state next slice selection / ephemeral chat・shared-state next slice selection | Decide whether the next slice should be sample40 HTTP validation, SQLite storage, richer image UI validation, real WebSocket transport, production-hardening checklist, or checkpoint/PR | `ACTIVE_NEXT` | Choose the next scope after reviewing sample39 image attachments and sample40 ephemeral URL-room behavior |
+| 957 | Ephemeral room chat site sample / 24時間で消えるroom chat site sample | Add a cut-out-friendly sample site where URL-named rooms are recreated on access, image attachments are stored outside message state, messages expire after 24h, inactive rooms expire after 7d, room registry can remain, and API routes are validated over loopback HTTP | `FIRST_SLICE_DONE` | `sample40-ephemeral-room-chat-site` is self-contained and dependency-free; first slice uses JSON file plus ephemeral image directory, loopback HTTP route validation, not production DB/storage/auth/WebSocket |
+| 958 | Ephemeral chat / shared-state next slice selection / ephemeral chat・shared-state next slice selection | Decide whether the next slice should be SQLite storage, richer image UI validation, real WebSocket transport, production-hardening checklist, or checkpoint/PR | `ACTIVE_NEXT` | Choose the next scope after reviewing sample39 image attachments and sample40 ephemeral URL-room behavior plus HTTP route validation |
 
 ### Candidate Next Lanes / 次候補
 

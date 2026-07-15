@@ -18,6 +18,7 @@ for (const file of [
   'src/ephemeral-room-chat-store.mjs',
   'src/server.mjs',
   'scripts/validate-sample.mjs',
+  'scripts/validate-http-routes.mjs',
   'public/.gitkeep'
 ]) {
   assert(fs.existsSync(path.join(sampleRoot, file)), `Missing required file: ${file}`);

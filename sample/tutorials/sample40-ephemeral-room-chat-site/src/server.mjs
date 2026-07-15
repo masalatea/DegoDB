@@ -2,16 +2,9 @@ import http from 'node:http';
 import os from 'node:os';
 import path from 'node:path';
 import crypto from 'node:crypto';
+import { fileURLToPath } from 'node:url';
 import { EphemeralRoomChatStore, normalizeRoomSlug } from './ephemeral-room-chat-store.mjs';
 import { EphemeralImageStore } from './ephemeral-image-store.mjs';
-
-const port = Number(process.env.PORT ?? 8787);
-const dataDir = process.env.SAMPLE40_DATA_DIR ?? path.join(os.tmpdir(), 'sample40-ephemeral-room-chat-site');
-const imageStore = new EphemeralImageStore({ rootDir: path.join(dataDir, 'images') });
-const store = new EphemeralRoomChatStore({
-  filePath: path.join(dataDir, 'chat-store.json'),
-  imageStore
-});
 
 function send(response, statusCode, body, contentType = 'text/plain; charset=utf-8') {
   response.writeHead(statusCode, {
@@ -139,83 +132,110 @@ function page(roomSlug) {
 </html>`;
 }
 
-const server = http.createServer(async (request, response) => {
-  const url = new URL(request.url ?? '/', 'http://127.0.0.1');
+function createDefaultStores({ dataDir }) {
+  const imageStore = new EphemeralImageStore({ rootDir: path.join(dataDir, 'images') });
+  const store = new EphemeralRoomChatStore({
+    filePath: path.join(dataDir, 'chat-store.json'),
+    imageStore
+  });
+  return { store, imageStore };
+}
 
-  try {
-    if (request.method === 'GET' && url.pathname.startsWith('/r/')) {
-      const roomSlug = decodeURIComponent(url.pathname.slice('/r/'.length));
-      store.openRoom(roomSlug);
-      send(response, 200, page(roomSlug), 'text/html; charset=utf-8');
-      return;
-    }
+function createServer({ store, imageStore }) {
+  return http.createServer(async (request, response) => {
+    const url = new URL(request.url ?? '/', 'http://127.0.0.1');
 
-    const roomApiMatch = url.pathname.match(/^\/api\/rooms\/([^/]+)$/);
-    if (request.method === 'POST' && roomApiMatch) {
-      const opened = store.openRoom(decodeURIComponent(roomApiMatch[1]));
-      sendJson(response, 200, opened);
-      return;
-    }
-
-    const messagesApiMatch = url.pathname.match(/^\/api\/rooms\/([^/]+)\/messages$/);
-    if (request.method === 'GET' && messagesApiMatch) {
-      sendJson(response, 200, store.listMessages(decodeURIComponent(messagesApiMatch[1])));
-      return;
-    }
-    if (request.method === 'POST' && messagesApiMatch) {
-      const body = await readJson(request);
-      const result = store.postMessage({
-        roomSlug: decodeURIComponent(messagesApiMatch[1]),
-        senderName: body.sender_name,
-        body: body.body,
-        attachments: body.attachments ?? []
-      });
-      sendJson(response, result.ok ? 200 : 400, result);
-      return;
-    }
-
-    const imagesApiMatch = url.pathname.match(/^\/api\/rooms\/([^/]+)\/images$/);
-    if (request.method === 'POST' && imagesApiMatch) {
-      store.openRoom(decodeURIComponent(imagesApiMatch[1]));
-      const body = await readJson(request);
-      const result = imageStore.storeImage({
-        attachmentId: crypto.randomUUID(),
-        fileName: body.file_name ?? 'image.bin',
-        mimeType: body.mime_type,
-        bytes: Buffer.from(String(body.data_base64 ?? ''), 'base64')
-      });
-      sendJson(response, result.ok ? 200 : 400, result);
-      return;
-    }
-
-    const attachmentMatch = url.pathname.match(/^\/attachments\/([^/]+)$/);
-    if (request.method === 'GET' && attachmentMatch) {
-      const storageKey = decodeURIComponent(attachmentMatch[1]);
-      const state = store.getRawState();
-      const attachment = Object.values(state.messages)
-        .flat()
-        .flatMap(message => message.attachments ?? [])
-        .find(item => item.storage_key === storageKey);
-      if (!attachment) {
-        send(response, 404, 'not found');
+    try {
+      if (request.method === 'GET' && url.pathname.startsWith('/r/')) {
+        const roomSlug = decodeURIComponent(url.pathname.slice('/r/'.length));
+        store.openRoom(roomSlug);
+        send(response, 200, page(roomSlug), 'text/html; charset=utf-8');
         return;
       }
-      send(response, 200, imageStore.readImage(storageKey), attachment.mime_type);
-      return;
+
+      const roomApiMatch = url.pathname.match(/^\/api\/rooms\/([^/]+)$/);
+      if (request.method === 'POST' && roomApiMatch) {
+        const opened = store.openRoom(decodeURIComponent(roomApiMatch[1]));
+        sendJson(response, 200, opened);
+        return;
+      }
+
+      const messagesApiMatch = url.pathname.match(/^\/api\/rooms\/([^/]+)\/messages$/);
+      if (request.method === 'GET' && messagesApiMatch) {
+        sendJson(response, 200, store.listMessages(decodeURIComponent(messagesApiMatch[1])));
+        return;
+      }
+      if (request.method === 'POST' && messagesApiMatch) {
+        const body = await readJson(request);
+        const result = store.postMessage({
+          roomSlug: decodeURIComponent(messagesApiMatch[1]),
+          senderName: body.sender_name,
+          body: body.body,
+          attachments: body.attachments ?? []
+        });
+        sendJson(response, result.ok ? 200 : 400, result);
+        return;
+      }
+
+      const imagesApiMatch = url.pathname.match(/^\/api\/rooms\/([^/]+)\/images$/);
+      if (request.method === 'POST' && imagesApiMatch) {
+        store.openRoom(decodeURIComponent(imagesApiMatch[1]));
+        const body = await readJson(request);
+        const result = imageStore.storeImage({
+          attachmentId: crypto.randomUUID(),
+          fileName: body.file_name ?? 'image.bin',
+          mimeType: body.mime_type,
+          bytes: Buffer.from(String(body.data_base64 ?? ''), 'base64')
+        });
+        sendJson(response, result.ok ? 200 : 400, result);
+        return;
+      }
+
+      const attachmentMatch = url.pathname.match(/^\/attachments\/([^/]+)$/);
+      if (request.method === 'GET' && attachmentMatch) {
+        const storageKey = decodeURIComponent(attachmentMatch[1]);
+        const state = store.getRawState();
+        const attachment = Object.values(state.messages)
+          .flat()
+          .flatMap(message => message.attachments ?? [])
+          .find(item => item.storage_key === storageKey);
+        if (!attachment) {
+          send(response, 404, 'not found');
+          return;
+        }
+        send(response, 200, imageStore.readImage(storageKey), attachment.mime_type);
+        return;
+      }
+
+      if (request.method === 'POST' && url.pathname === '/api/cleanup') {
+        sendJson(response, 200, store.cleanup());
+        return;
+      }
+
+      send(response, 404, 'not found');
+    } catch (error) {
+      sendJson(response, 500, { ok: false, error: error.message });
     }
+  });
+}
 
-    if (request.method === 'POST' && url.pathname === '/api/cleanup') {
-      sendJson(response, 200, store.cleanup());
-      return;
-    }
+function startServer({
+  port = Number(process.env.PORT ?? 8787),
+  host = '127.0.0.1',
+  dataDir = process.env.SAMPLE40_DATA_DIR ?? path.join(os.tmpdir(), 'sample40-ephemeral-room-chat-site')
+} = {}) {
+  const stores = createDefaultStores({ dataDir });
+  const server = createServer(stores);
+  server.listen(port, host, () => {
+    console.log(`sample40 listening on http://${host}:${port}/r/general`);
+    console.log(`data dir: ${dataDir}`);
+  });
+  return { server, ...stores, dataDir };
+}
 
-    send(response, 404, 'not found');
-  } catch (error) {
-    sendJson(response, 500, { ok: false, error: error.message });
-  }
-});
+const isCli = process.argv[1] === fileURLToPath(import.meta.url);
+if (isCli) {
+  startServer();
+}
 
-server.listen(port, '127.0.0.1', () => {
-  console.log(`sample40 listening on http://127.0.0.1:${port}/r/general`);
-  console.log(`data dir: ${dataDir}`);
-});
+export { createDefaultStores, createServer, startServer };

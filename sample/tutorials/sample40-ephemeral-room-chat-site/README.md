@@ -32,7 +32,11 @@ That keeps the sample easy to validate and easy to replace with SQLite later.
 
 ```bash
 node sample/tutorials/sample40-ephemeral-room-chat-site/scripts/validate-sample.mjs
+node sample/tutorials/sample40-ephemeral-room-chat-site/scripts/validate-http-routes.mjs
 ```
+
+`validate-sample.mjs` checks the store/domain boundary directly.
+`validate-http-routes.mjs` starts a temporary loopback server and checks the browser-facing API routes.
 
 ## Run locally
 
