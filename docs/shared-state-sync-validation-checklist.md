@@ -12,6 +12,7 @@
 - server owner が `sync-server-input.json` を読める
 - client owner が `sync-client-input.json` を読める
 - sample36 / sample37 が packet shape を静的に検証できる
+- sample38 が packet を runtime-shaped reference として読んで、membership / revision / fanout / latest fetch / secret-free event を検証できる
 - Mtool CLI が server/client packet を出せる
 - 禁止 action と ownership boundary が明確である
 - AI / 外部実装者が、何を実装してよいか、何を実装してはいけないかを判断できる
@@ -74,7 +75,31 @@ Client packet で確認すること:
 - WebSocket / SSE / polling fallback の責務が明示されている
 - SSO setup / dependency install / app source generation をしない
 
-## 4. Handoff checklist for AI / external owner
+## 4. Runtime reference sample checklist
+
+| Check | Command / file |
+| --- | --- |
+| reference runtime sample が存在する | `sample/tutorials/sample38-shared-state-sync-node-runtime/` |
+| runtime-shaped validation が通る | `node sample/tutorials/sample38-shared-state-sync-node-runtime/scripts/validate-sample.mjs` |
+| dependency-free である | sample root に `package.json` / `node_modules` を置かない |
+| production server ではない | README が public port / real WebSocket server / deployment 非scopeを明記する |
+
+Sample38 で確認すること:
+
+- sample36/server packet と sample37/client packet を読む
+- member は subscribe できる
+- non-member は subscribe できない
+- viewer は update できない
+- editor は update できる
+- stale revision は reject される
+- accepted update は同じ room の subscriber にだけ fanout される
+- reconnect/latest-fetch で最新 revision を取得できる
+- event / audit event に SSO token、refresh token、raw invite token、secret を含めない
+- loopback-only HTTP/SSE fallback reference が read / update / conflict / latest revision / SSE event を検証できる
+
+この sample は in-process event bus で WebSocket 相当の境界を検証し、Node.js 標準 `http` による loopback-only HTTP/SSE fallback を検証する。real WebSocket server、dependency install、public port、production deploy は別scopeである。
+
+## 5. Handoff checklist for AI / external owner
 
 AI または外部実装者に渡すときは、次を確認する。
 
@@ -88,7 +113,7 @@ AI または外部実装者に渡すときは、次を確認する。
 | validation は何か | sample validator + focused PHPUnit + `git diff --check` |
 | 成功とは何か | packet が読めて、境界・禁止 action・validation が説明可能 |
 
-## 5. Forbidden implicit actions
+## 6. Forbidden implicit actions
 
 この checklist の範囲では、次を暗黙に行わない。
 
@@ -108,7 +133,7 @@ AI または外部実装者に渡すときは、次を確認する。
 - CRDT/OT / game-loop authority 実装
 - user source overwrite
 
-## 6. 最小 validation command set
+## 7. 最小 validation command set
 
 Docs-only 変更の場合:
 
@@ -121,6 +146,7 @@ Server packet を変更した場合:
 ```bash
 docker compose run --rm web-admin phpunit --configuration /var/www/tests/phpunit.xml /var/www/tests/Integration/SharedStateSyncServerInputTest.php
 node sample/tutorials/sample36-shared-state-sync-server-input/scripts/validate-sample.mjs
+node sample/tutorials/sample38-shared-state-sync-node-runtime/scripts/validate-sample.mjs
 git diff --check
 ```
 
@@ -129,6 +155,8 @@ Client packet を変更した場合:
 ```bash
 docker compose run --rm web-admin phpunit --configuration /var/www/tests/phpunit.xml /var/www/tests/Integration/SharedStateSyncClientInputTest.php
 node sample/tutorials/sample37-shared-state-sync-client-input/scripts/validate-sample.mjs
+node sample/tutorials/sample38-shared-state-sync-node-runtime/scripts/validate-sample.mjs
+node sample/tutorials/sample38-shared-state-sync-node-runtime/scripts/validate-http-sse-sample.mjs
 git diff --check
 ```
 
@@ -139,16 +167,27 @@ docker compose run --rm web-admin phpunit --configuration /var/www/tests/phpunit
 docker compose run --rm web-admin phpunit --configuration /var/www/tests/phpunit.xml /var/www/tests/Integration/SharedStateSyncClientInputTest.php
 node sample/tutorials/sample36-shared-state-sync-server-input/scripts/validate-sample.mjs
 node sample/tutorials/sample37-shared-state-sync-client-input/scripts/validate-sample.mjs
+node sample/tutorials/sample38-shared-state-sync-node-runtime/scripts/validate-sample.mjs
 git diff --check
 ```
 
-## 7. Pass / fail
+Runtime reference sample を変更した場合:
+
+```bash
+node sample/tutorials/sample36-shared-state-sync-server-input/scripts/validate-sample.mjs
+node sample/tutorials/sample37-shared-state-sync-client-input/scripts/validate-sample.mjs
+node sample/tutorials/sample38-shared-state-sync-node-runtime/scripts/validate-sample.mjs
+git diff --check
+```
+
+## 8. Pass / fail
 
 Pass:
 
 - 必須 contract が存在する
 - server/client packet の責務境界が説明できる
 - sample36 / sample37 がそれぞれ validation できる
+- sample38 が runtime-shaped reference として validation できる
 - Mtool emission test が対象範囲で通る
 - forbidden implicit actions が明記されている
 
