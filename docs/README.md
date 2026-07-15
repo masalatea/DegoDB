@@ -35,6 +35,7 @@ top-level は外部ユーザ向け導線を優先し、内部向け文書は [In
    - [Mobile Artifact Execution UI Policy / mobile artifact execution UI policy](mobile-artifact-execution-ui-policy.md)
    - [Shared State Sync Contract / shared state sync contract](shared-state-sync-contract.md)
    - [Shared State Sync Schema/API Contract / shared state sync schema・API contract](shared-state-sync-schema-api-contract.md)
+   - [Shared State Sync Realtime Contract / shared state sync realtime contract](shared-state-sync-realtime-contract.md)
    - [Use Cases / ユースケース](use-cases.md)
    - [Consulting Intake / 相談前チェックリスト](consulting-intake.md)
    - [Deliverables / 成果物 catalog](deliverables.md)
@@ -99,6 +100,8 @@ detail doc だけを読んで mainline を再構成するのは current reading 
   - SSO authenticated user、room / membership / invite token、room-scoped shared state、event、conflict policy、WebSocket-first transport boundary を定義する。Mtool は contract / input packet を担い、production Node.js realtime runtime は別 owner とする
 - [Shared State Sync Schema/API Contract / shared state sync schema・API contract](shared-state-sync-schema-api-contract.md)
   - room / membership / invite / shared state / event の v1 schema と、room作成・invite・join・state read/update/latest revision の REST API contract を定義する
+- [Shared State Sync Realtime Contract / shared state sync realtime contract](shared-state-sync-realtime-contract.md)
+  - WebSocket-first event / command envelope、state update、membership change、heartbeat、reconnect/latest-fetch、SSE + HTTP fallback、polling fallback を定義する
 - [Use Cases / ユースケース](use-cases.md)
   - database-first、existing-database-first、legacy modernization の用途整理
 - [Consulting Intake / 相談前チェックリスト](consulting-intake.md)
