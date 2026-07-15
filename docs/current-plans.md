@@ -19,7 +19,7 @@ When someone asks for "the plan list", answer from this section first. / 「計�
 - RSS 後の bundle / manifest / validation checklist 整理は完了済み。
 - 外部 consumer handoff readiness と AI-assisted external app handoff checklist は完了済み。
 - 全体整理 pass 1〜5 の初回周回は完了済み。
-- 次は、次の product scope を選ぶ判断。
+- 次は、Shared-state sync runtime integration の Node.js reference sample first slice を確認し、次の runtime slice を選ぶ。
 
 Current main status:
 
@@ -27,11 +27,12 @@ Current main status:
 - The post-RSS bundle / manifest / validation checklist organization is complete.
 - External consumer handoff readiness and the AI-assisted external app handoff checklist are complete.
 - The first multi-pass cleanup sequence, passes 1 through 5, is complete.
-- Next is selecting the next product scope.
+- Next is reviewing the first Node.js reference sample for shared-state sync runtime integration and selecting the next runtime slice.
 
 | Order | Work unit / 作業の塊 | Commit unit / コミット単位 | Status | Next decision / 次の判断 |
 | --- | --- | --- | --- | --- |
-| 952 | Next product scope selection after post-RSS cleanup / RSS後整理完了後の次product scope選定 | Choose one candidate lane to promote into the next Main Plan implementation or planning slice | `ACTIVE_NEXT` | Candidate lanes are listed below; do not start implementation until one scope is selected |
+| 952 | Shared-state sync runtime integration sample / shared-state sync runtime integration sample | Add a dependency-free Node.js reference sample that consumes sample36/37 packets and validates room membership, revision conflict, event fanout, latest fetch, and secret-free events | `FIRST_SLICE_DONE` | `sample38-shared-state-sync-node-runtime` added as an in-process runtime-shaped reference; no production server, dependency install, public port, real WebSocket server, SDK, or token storage |
+| 953 | Shared-state sync runtime next slice selection / shared-state sync runtime next slice selection | Decide whether the next slice should be real WebSocket transport, HTTP/SSE fallback sample, Mtool artifact linkage, or checkpoint/PR | `ACTIVE_NEXT` | Choose the next scope after reviewing sample38 validation and boundaries |
 
 ### Candidate Next Lanes / 次候補
 
@@ -40,7 +41,7 @@ These are candidates only. Promote one into Main Plan when the user chooses it. 
 | Candidate / 候補 | Why it exists / 理由 | Current boundary / 現在の境界 |
 | --- | --- | --- |
 | AI-assisted artifact execution packets | Direct browser execution remains read-only, but Mtool can expose task packets that Codex / Claude read, explain, confirm, execute through CLI, validate, and report. | Route is documented; implementation would be a new scoped lane. |
-| Shared-state sync runtime integration | Server/client input packets are ready, but production runtime is not generated. | New scope only; must not silently include Node.js server ownership, SDK generation, SSO setup, or token storage. |
+| Shared-state sync runtime integration | Promoted as #952. Server/client input packets are ready; the next slice is a Node.js reference sample, not production runtime generation. | Must not silently include deployed Node.js ownership, SDK generation, SSO setup, token storage, dependency install, public port, Redis/pubsub, or guaranteed replay. |
 | External consumer concrete integration | Handoff readiness is documented. A concrete consumer could be selected next. | New scope only; avoid native project generation, dependency install, signing, or store submission by default. |
 | New domain/sample lane | A different sample or domain can be promoted if it better matches the next product goal. | Requires a fresh scope decision. |
 
