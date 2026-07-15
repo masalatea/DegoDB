@@ -11,6 +11,7 @@ sample39 is a domain sample that uses the same room / membership / revision / ev
 - Creates a chat room backed by the sample38 in-memory reference runtime.
 - Stores messages as room-scoped shared state.
 - Appends messages with `expected_revision`.
+- Stores image bytes in an ephemeral local store and syncs only attachment metadata.
 - Emits `state.updated` to subscribers in the same room.
 - Rejects non-member messages.
 - Rejects stale message appends.
@@ -19,7 +20,14 @@ sample39 is a domain sample that uses the same room / membership / revision / ev
 
 ## What this sample intentionally does not do
 
-This sample does not install dependencies, open a public port, run a production WebSocket server, persist chat history to a database, implement SSO/OIDC setup, generate client UI, or provide moderation / attachment / notification features.
+This sample does not install dependencies, open a public port, run a production WebSocket server, persist chat history to a database, implement SSO/OIDC setup, generate client UI, or provide moderation / notification features.
+
+Image attachments are sample-only:
+
+- bytes are written to a temporary local directory;
+- the temporary directory is removed after validation;
+- sync events contain metadata such as `storage_key`, `mime_type`, `size_bytes`, `width`, and `height`;
+- sync events do not contain raw image bytes.
 
 It is a domain-level tutorial showing how a chat-like feature can sit on top of the shared-state sync contract.
 
