@@ -169,6 +169,7 @@ Do not reconstruct the mainline by reading the detail docs first. Choose a readi
 - State and persistence map / 何がどこに残るかを見る地図: [Storage And State Model / 保存先と状態モデル](docs/storage-and-state-model.md)
 - Warning and error triage / 警告やエラーの切り分け: [Troubleshooting / トラブルシューティング](docs/troubleshooting.md)
 - Sample learning path / サンプル学習導線: [Sample Tutorial Roadmap / sample 学習導線](docs/sample-tutorial-roadmap.md)
+- Complete tutorial catalog / 全 tutorial sample 一覧: [Sample Tutorial Packs / tutorial sample 一覧](sample/tutorials/README.md)
 - Internal contributor reference / 開発者向け内部資料: [Internal Documentation Index / 内部ドキュメント索引](docs/internal/README.md)
 - Test guide / テスト導線: [Test Guide / テストガイド](tests/README.md)
 
@@ -208,12 +209,14 @@ Lab DB UI / Lab DB UI:
 ### Try One Tutorial Sample / tutorial sample を 1 本触る
 
 - Entry sample / 入口サンプル: `sample/tutorials/sample01-simple-table-runtime`
-- Current tutorial lane / 現在のチュートリアル導線: `sample01` through `sample17` / `sample01` から `sample17`
-- Latest sample / 最新サンプル: `sample/tutorials/sample17-multi-output-project`
+- Current tutorial lane / 現在のチュートリアル導線: `sample01` through `sample47` / `sample01` から `sample47`
+- Latest sample / 最新サンプル: `sample/tutorials/sample47-open-world-rpg-demo`
 
 ```bash
 make sample01-pack-runtime-test
 make sample17-pack-runtime-test
+node sample/tutorials/sample47-open-world-rpg-demo/scripts/validate-sample.mjs
+node sample/tutorials/sample47-open-world-rpg-demo/scripts/validate-mtool-artifact-linkage.mjs
 ```
 
 See [Study Guide / sample で学ぶ](docs/study/README.md) for the hands-on reading order, and [Sample Tutorial Roadmap / sample 学習導線](docs/sample-tutorial-roadmap.md) for the sample catalog and role split.
@@ -230,8 +233,10 @@ ADMIN_HTTP_PORT=18091 LAB_HTTP_PORT=18092 CONFIG_DB_HOST_PORT=43091 LAB_DB_HOST_
 
 ## Directory Guide / ディレクトリの見方
 
-- `mtool/`
-  - Current implementation / 現行実装
+- [`mtool/`](mtool/README.md)
+  - Current implementation and directory ownership / 現行実装と各 directory の責務
+- [`deploy/`](deploy/README.md)
+  - Durable/team-use environment templates / 継続・team利用向け environment template
 - `sample/`
   - Tutorial, internal pattern, and representative project packs / チュートリアル、内部検証パターン、代表的なプロジェクトパックの置き場
 - `examples/`
