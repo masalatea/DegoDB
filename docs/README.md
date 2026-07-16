@@ -19,6 +19,7 @@ top-level は外部ユーザ向け導線を優先し、内部向け文書は [In
    - [Adoption Guide / 採用ガイド](adoption-guide.md)
    - [JSON To DB Entrance / JSON から DB 設計へ入る入口](json-to-db-entrance.md) optional pre-design entrance
    - [AI Task-Packet Workflow / AI task packet ワークフロー](ai-task-packet-workflow.md)
+   - [AI-Assisted External App Handoff Checklist / AI支援 external app handoff checklist](ai-assisted-external-app-handoff-checklist.md)
    - [AI Schema Proposal Handoff Guide / AI schema proposal handoff guide](ai-schema-proposal-handoff-guide.md)
    - [AI Workspace Onboarding Command Guide / AI workspace onboarding command guide](ai-workspace-onboarding-command-guide.md)
    - [Sample19 Material-to-No-Code Validation Pipeline / Sample19資料to No Code validation pipeline](sample19-material-to-no-code-validation-pipeline.md)
@@ -28,6 +29,7 @@ top-level は外部ユーザ向け導線を優先し、内部向け文書は [In
    - [Mobile App Handoff Spec / mobile app handoff spec](mobile-app-handoff-spec.md)
    - [Mobile React Wrapper Target Contract / mobile React wrapper target contract](mobile-react-wrapper-target-contract.md)
    - [External No-Code Output / external no-code output](external-no-code-output.md)
+   - [External Consumer Handoff Readiness / external consumer handoff readiness](external-consumer-handoff-readiness.md)
    - [Mobile Capacitor Wrapper Proof Plan / mobile Capacitor wrapper proof plan](mobile-capacitor-wrapper-proof-plan.md)
    - [Mobile External Feasibility Study / mobile external FS](mobile-external-feasibility-study.md)
    - [Mobile Ownership Boundaries / mobile ownership boundary](mobile-ownership-boundaries.md)
@@ -36,6 +38,8 @@ top-level は外部ユーザ向け導線を優先し、内部向け文書は [In
    - [Shared State Sync Contract / shared state sync contract](shared-state-sync-contract.md)
    - [Shared State Sync Schema/API Contract / shared state sync schema・API contract](shared-state-sync-schema-api-contract.md)
    - [Shared State Sync Realtime Contract / shared state sync realtime contract](shared-state-sync-realtime-contract.md)
+   - [Shared State Sync Bundle Manifest / shared state sync bundle manifest](shared-state-sync-bundle-manifest.md)
+   - [Shared State Sync Validation Checklist / shared state sync validation checklist](shared-state-sync-validation-checklist.md)
    - [Shared State Sync Node Server Input Packet / shared state sync Node server input packet](shared-state-sync-node-server-input-packet.md)
    - [Shared State Sync App Client Input Packet / shared state sync app client input packet](shared-state-sync-app-client-input-packet.md)
    - [Use Cases / ユースケース](use-cases.md)
@@ -45,6 +49,7 @@ top-level は外部ユーザ向け導線を優先し、内部向け文書は [In
    - [Common Tasks / よく使う作業](common-tasks.md)
    - [Goal-Based Help And Wrapper CLI Roadmap / 目的別 help と wrapper CLI roadmap](goal-based-help-and-wrapper-cli-roadmap.md)
    - [Current Supported Workflow / 現在サポートするワークフロー](current-supported-workflow.md)
+   - [Repository Cleanup Pass Checklist / repository 全体整理 pass checklist](repository-cleanup-pass-checklist.md)
    - [Troubleshooting / トラブルシューティング](troubleshooting.md)
 3. detail layer
    - [Concept Overview / 概念概要](overview.md)
@@ -97,13 +102,17 @@ detail doc だけを読んで mainline を再構成するのは current reading 
 - [Mobile Output Modes / mobile output modes](mobile-output-modes.md)
   - `mtool_no_code` / `external_no_code` / `hybrid` の意味、必須 artifact、validation、UI文言、non-goal を定義する
 - [Mobile Artifact Execution UI Policy / mobile artifact execution UI policy](mobile-artifact-execution-ui-policy.md)
-  - mobile artifact generation UI は現時点で read-only とし、CSRF / output-dir / overwrite / audit / failure control が揃うまで実行UIを追加しない policy
+  - mobile artifact generation UI は現時点で read-only とし、CSRF / output-dir / overwrite / audit / failure control が揃うまで直接実行UIを追加しない policy。実行したい場合は、AI が確認して CLI 実行する task-packet route を優先導線として扱う
 - [Shared State Sync Contract / shared state sync contract](shared-state-sync-contract.md)
   - SSO authenticated user、room / membership / invite token、room-scoped shared state、event、conflict policy、WebSocket-first transport boundary を定義する。Mtool は contract / input packet を担い、production Node.js realtime runtime は別 owner とする
 - [Shared State Sync Schema/API Contract / shared state sync schema・API contract](shared-state-sync-schema-api-contract.md)
   - room / membership / invite / shared state / event の v1 schema と、room作成・invite・join・state read/update/latest revision の REST API contract を定義する
 - [Shared State Sync Realtime Contract / shared state sync realtime contract](shared-state-sync-realtime-contract.md)
   - WebSocket-first event / command envelope、state update、membership change、heartbeat、reconnect/latest-fetch、SSE + HTTP fallback、polling fallback を定義する
+- [Shared State Sync Bundle Manifest / shared state sync bundle manifest](shared-state-sync-bundle-manifest.md)
+  - shared-state sync の contract / schema API / realtime / server packet / client packet / sample / validation evidence を 1 つの handoff set として読むための索引。production Node.js server や client SDK は生成しない
+- [Shared State Sync Validation Checklist / shared state sync validation checklist](shared-state-sync-validation-checklist.md)
+  - shared-state sync packet set が ready と言えるかを確認する checklist。server/client packet、sample36/37、runtime-shaped sample38、Mtool artifact linkage、focused test、禁止action、AI/external owner handoff を確認する
 - [Shared State Sync Node Server Input Packet / shared state sync Node server input packet](shared-state-sync-node-server-input-packet.md)
   - 別 runtime として動く Node.js sync server に渡す `sync-server-input.json` / `SYNC-SERVER-INPUT.md` の packet shape、backend integration、route/auth/state/event/fallback/validation、forbidden implicit actions を定義する
 - [Shared State Sync App Client Input Packet / shared state sync app client input packet](shared-state-sync-app-client-input-packet.md)
@@ -165,6 +174,8 @@ detail doc だけを読んで mainline を再構成するのは current reading 
   - Mtool が wrapper-ready input package までを担当し、React app shell / Capacitor / native build / signing は外部 owner が担当する境界を固定する
 - [External No-Code Output / external no-code output](external-no-code-output.md)
   - optional `external_no_code` output の正本。`external-output.json` を外部 FE/no-code/tool が読むための field、CLI、non-goal、validation を固定する
+- [External Consumer Handoff Readiness / external consumer handoff readiness](external-consumer-handoff-readiness.md)
+  - React/Web + Capacitor、PWA、Flutter WebView、React Native、Codex/Claude、shared-state sync external runtime owners の handoff readiness と gap を横断整理する
 - [Mobile Capacitor Wrapper Proof Plan / mobile Capacitor wrapper proof plan](mobile-capacitor-wrapper-proof-plan.md)
   - first proof candidate を sample28 に置き、native build ではなく wrapper-readiness package と既存 React bridge smoke を C1 gate として扱う
 - [Mobile External Feasibility Study / mobile external FS](mobile-external-feasibility-study.md)
@@ -176,7 +187,7 @@ detail doc だけを読んで mainline を再構成するのは current reading 
 - [Shared State Sync Contract / shared state sync contract](shared-state-sync-contract.md)
   - room/shared-state sync lane の最初の正本。SSO token を共有せず、app user + room membership で認可し、Node.js sync server を別runtime ownerとして扱う contract
 - [Mobile Artifact Execution UI Policy / mobile artifact execution UI policy](mobile-artifact-execution-ui-policy.md)
-  - read-only guide route を維持し、UI実行は safety control 実装後に再開するという policy 正本
+  - read-only guide route を維持し、UI直接実行は safety control 実装後に再開するという policy 正本。AI-assisted task packet による確認付き CLI 実行導線もここで定義する
 - [Use Cases / ユースケース](use-cases.md)
   - database-first / existing-database-first の実用シナリオと、現行対応・旧実装参照・将来対応候補の整理
 - [Adoption Guide / 採用ガイド](adoption-guide.md)
@@ -195,6 +206,8 @@ detail doc だけを読んで mainline を再構成するのは current reading 
   - DB をよく知らない利用者が、JSON sample と現在の処理説明から DB 設計案へ進むための、初期構想に含まれる optional pre-design entrance
 - [AI Task-Packet Workflow / AI task packet ワークフロー](ai-task-packet-workflow.md)
   - provider API不要のCodex/Claude主導task packet、単一validation pipeline、read-only review、optional Ollama fallbackの正本
+- [AI-Assisted External App Handoff Checklist / AI支援 external app handoff checklist](ai-assisted-external-app-handoff-checklist.md)
+  - Codex / Claude が external-output、output-mode-config、PWA、Flutter WebView、React Native、shared-state sync packet を読むとき、実装前に目的・入力・出力先・上書き・禁止action・validationを確認する checklist
 - [AI Schema Proposal Handoff Guide / AI schema proposal handoff guide](ai-schema-proposal-handoff-guide.md)
   - schema proposal task packet を受け取ったAIが、source/scan/fallback/formal output/review artifact の権限差、確認文、copy/adapt、validator再実行を判断するための正本
 - [Sample19 Material-to-No-Code Validation Pipeline / Sample19資料to No Code validation pipeline](sample19-material-to-no-code-validation-pipeline.md)
@@ -215,6 +228,8 @@ detail doc だけを読んで mainline を再構成するのは current reading 
   - mutation / execution route の all-success-or-failure UI/API contract
 - [Current Supported Workflow / 現在サポートするワークフロー](current-supported-workflow.md)
   - current mainline と archived 導線の切り分け
+- [Repository Cleanup Pass Checklist / repository 全体整理 pass checklist](repository-cleanup-pass-checklist.md)
+  - docs、sample、mtool code/script、test/evidence、final consistency を複数周回で整理するための checklist。履歴は削除せず日付付き履歴へ移す
 - [Common Tasks / よく使う作業](common-tasks.md)
   - 起動、sample、test、config DB backup / durable env、runtime reference 操作の最短手順
 - [Goal-Based Help And Wrapper CLI Roadmap / 目的別 help と wrapper CLI roadmap](goal-based-help-and-wrapper-cli-roadmap.md)

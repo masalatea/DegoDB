@@ -1,0 +1,256 @@
+{
+  "schema_version": "choice_adventure_game_input.v1",
+  "generated_by": {
+    "tool": "mtool",
+    "artifact": "choice_adventure_game_input"
+  },
+  "sample": "sample46-choice-adventure-game",
+  "runtime_boundary": {
+    "owner": "static_app_owner",
+    "mtool_responsibility": [
+      "emit structured scenario data",
+      "emit scene and choice contract",
+      "validate that the static runtime consumes the contract"
+    ],
+    "external_runtime_responsibility": [
+      "own final writing",
+      "own final artwork",
+      "own production adventure API",
+      "own production packaging"
+    ],
+    "nodejs_required": false,
+    "peer_communication_required": false,
+    "adventure_api_required": true,
+    "default_api_mode": "mock_adapter",
+    "production_runtime_generated": false
+  },
+  "game": {
+    "title": "The Lantern Archive",
+    "subtitle": "A tiny old-school choice adventure",
+    "input_modes": [
+      "keyboard_up_down_enter",
+      "mouse_click",
+      "touch_tap"
+    ],
+    "opening_scene": "opening",
+    "goal_scene": "ending_good",
+    "game_over_scene": "ending_bad",
+    "minimum_goal_choices": 5
+  },
+  "scene_schema": {
+    "required_fields": [
+      "id",
+      "kind",
+      "frame",
+      "title",
+      "text",
+      "choices"
+    ],
+    "frame_style": "css_flipbook_panel",
+    "choice_fields": [
+      "label",
+      "target"
+    ]
+  },
+  "api_contract": {
+    "transport": "http_json",
+    "nodejs_required": false,
+    "peer_communication": false,
+    "default_adapter": "mock_adventure_api",
+    "production_endpoint_env": "SAMPLE46_ADVENTURE_API_URL",
+    "start": {
+      "method": "POST",
+      "path": "/adventure/start",
+      "request_fields": [
+        "session_id"
+      ],
+      "response_fields": [
+        "scene",
+        "history"
+      ]
+    },
+    "choose": {
+      "method": "POST",
+      "path": "/adventure/choose",
+      "request_fields": [
+        "session_id",
+        "current_scene_id",
+        "choice_index",
+        "history"
+      ],
+      "response_fields": [
+        "scene",
+        "history"
+      ]
+    }
+  },
+  "scenes": [
+    {
+      "id": "opening",
+      "kind": "opening",
+      "frame": "moon_gate",
+      "title": "Opening: A Gate in the Rain",
+      "text": "At midnight, a brass lantern glows beside an old archive gate. The keeper is missing, and the rain sounds like pages turning.",
+      "choices": [
+        {
+          "label": "Enter through the gate",
+          "target": "hall"
+        },
+        {
+          "label": "Walk away from the archive",
+          "target": "ending_bad"
+        }
+      ]
+    },
+    {
+      "id": "hall",
+      "kind": "scene",
+      "frame": "archive_hall",
+      "title": "The Archive Hall",
+      "text": "Shelves lean like tired giants. A sign reads: Only those who follow the quiet light may leave.",
+      "choices": [
+        {
+          "label": "Follow the small blue lantern",
+          "target": "stair"
+        },
+        {
+          "label": "Pull a red book from the shelf",
+          "target": "ending_bad"
+        }
+      ]
+    },
+    {
+      "id": "stair",
+      "kind": "scene",
+      "frame": "spiral_stair",
+      "title": "The Spiral Stair",
+      "text": "The blue lantern floats upward. Below, a black door whispers your name.",
+      "choices": [
+        {
+          "label": "Climb toward the lantern",
+          "target": "clock"
+        },
+        {
+          "label": "Open the black door",
+          "target": "ending_bad"
+        },
+        {
+          "label": "Return to the hall",
+          "target": "hall"
+        }
+      ]
+    },
+    {
+      "id": "clock",
+      "kind": "scene",
+      "frame": "clock_room",
+      "title": "The Clock Room",
+      "text": "A clock without hands ticks anyway. Three buttons glow under the face: dawn, noon, and dusk.",
+      "choices": [
+        {
+          "label": "Press dawn",
+          "target": "bridge"
+        },
+        {
+          "label": "Press noon",
+          "target": "stair"
+        },
+        {
+          "label": "Press dusk",
+          "target": "ending_bad"
+        }
+      ]
+    },
+    {
+      "id": "bridge",
+      "kind": "scene",
+      "frame": "paper_bridge",
+      "title": "The Paper Bridge",
+      "text": "A bridge made of old catalog cards stretches over a dark reading room. Step lightly, the ink is still wet.",
+      "choices": [
+        {
+          "label": "Cross slowly",
+          "target": "keeper"
+        },
+        {
+          "label": "Run across",
+          "target": "ending_bad"
+        },
+        {
+          "label": "Go back to the clock",
+          "target": "clock"
+        }
+      ]
+    },
+    {
+      "id": "keeper",
+      "kind": "scene",
+      "frame": "keeper_desk",
+      "title": "The Keeper's Desk",
+      "text": "The missing keeper is only a shadow behind a desk. It points to a blank card and waits.",
+      "choices": [
+        {
+          "label": "Write your name on the card",
+          "target": "ending_good"
+        },
+        {
+          "label": "Write the keeper's name",
+          "target": "ending_bad"
+        }
+      ]
+    },
+    {
+      "id": "ending_good",
+      "kind": "ending",
+      "frame": "sunrise_exit",
+      "title": "Ending: The Archive Opens",
+      "text": "The lantern becomes sunrise. The gate opens by itself, and the archive shelves bow as you leave.",
+      "choices": [
+        {
+          "label": "Play again",
+          "target": "opening"
+        }
+      ]
+    },
+    {
+      "id": "ending_bad",
+      "kind": "game_over",
+      "frame": "lost_pages",
+      "title": "Game Over: Lost in the Index",
+      "text": "The rain stops. Every sign now points to a shelf that was not there a moment ago.",
+      "choices": [
+        {
+          "label": "Return to the previous scene",
+          "target": "__back__"
+        },
+        {
+          "label": "Restart from opening",
+          "target": "opening"
+        }
+      ]
+    }
+  ],
+  "validation": {
+    "required_checks": [
+      "nodejs_not_required",
+      "peer_communication_not_required",
+      "adventure_api_contract",
+      "mock_api_adapter",
+      "opening_scene_present",
+      "five_choice_goal_path",
+      "game_over_path",
+      "back_or_restart_after_game_over",
+      "keyboard_up_down_enter",
+      "mouse_or_touch_choice",
+      "structured_scenario_data",
+      "no_external_image_assets_required"
+    ]
+  },
+  "forbidden_actions": [
+    "require_nodejs_runtime",
+    "require_peer_realtime_communication",
+    "require_remote_image_assets",
+    "require_database",
+    "claim_production_writer_or_art_pipeline"
+  ]
+}

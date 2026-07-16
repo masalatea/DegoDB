@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sample 41 Simple Whiteboard</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <main class="app">
+    <header class="toolbar" aria-label="Whiteboard tools">
+      <h1>Simple Whiteboard</h1>
+      <label>
+        Tool
+        <select id="tool">
+          <option value="pen">Pen</option>
+          <option value="eraser">Eraser</option>
+          <option value="text">Text</option>
+        </select>
+      </label>
+      <label>
+        Color
+        <input id="color" type="color" value="#2563eb">
+      </label>
+      <label>
+        Size
+        <input id="size" type="range" min="2" max="48" value="6">
+        <span id="sizeLabel">6</span>
+      </label>
+      <label class="text-entry">
+        Text
+        <input id="textValue" type="text" value="Hello" maxlength="80">
+      </label>
+      <button id="undo" type="button">Undo</button>
+      <button id="clear" type="button">Clear</button>
+      <button id="exportPng" type="button">Export PNG</button>
+    </header>
+
+    <section class="board-wrap" aria-label="Drawing area">
+      <canvas id="board" width="1000" height="640">
+        Your browser does not support canvas.
+      </canvas>
+    </section>
+
+    <p class="hint">
+      Use Pen to draw, Eraser to remove strokes, and Text to place the current text on the board.
+    </p>
+  </main>
+  <script type="module" src="./whiteboard.js"></script>
+</body>
+</html>

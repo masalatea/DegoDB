@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sample 45 Map Info Popup Site</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <main class="app">
+    <header class="panel">
+      <div>
+        <h1 id="siteTitle">Map Info Popup Site</h1>
+        <p id="siteDescription">Loading...</p>
+      </div>
+      <label>
+        Category
+        <select id="categoryFilter">
+          <option value="all">All</option>
+        </select>
+      </label>
+      <label>
+        Site search
+        <input id="siteSearch" type="search" placeholder="Search title, category, summary..." autocomplete="off">
+      </label>
+    </header>
+    <section class="layout">
+      <aside class="panel list">
+        <h2>Locations <span id="hitCount"></span></h2>
+        <div id="locationList"></div>
+      </aside>
+      <section class="map-shell">
+        <div id="map" aria-label="Local sample map">
+          <div class="map-grid"></div>
+          <div id="markerLayer"></div>
+          <article id="popup" class="popup hidden" aria-live="polite"></article>
+        </div>
+      </section>
+    </section>
+  </main>
+  <script type="module" src="/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sample 42 Room Shooter</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <main class="app">
+    <header class="panel">
+      <h1>Room Shooter</h1>
+      <p id="roomLabel">Room: local</p>
+      <button id="join">Join game</button>
+      <p class="hint">Two players battle from opposite sides. You are always shown at the bottom; the opponent is above. Move with WASD or arrow keys. Shoot upward with Space.</p>
+    </header>
+    <canvas id="arena" width="900" height="560"></canvas>
+    <section class="panel">
+      <pre id="status">Not joined</pre>
+    </section>
+  </main>
+  <script type="module" src="/game.js"></script>
+</body>
+</html>

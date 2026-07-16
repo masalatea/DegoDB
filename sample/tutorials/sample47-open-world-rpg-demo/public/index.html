@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sample 47 Open World RPG Demo</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <main class="app">
+    <header class="panel">
+      <div>
+        <h1>Open World RPG Demo</h1>
+        <p id="roomLabel">Room: local</p>
+      </div>
+      <button id="join">Join world</button>
+      <p class="hint">Move with WASD or arrow keys. Space swings a short sword. Enemies spawn nearby, walk slowly, and give EXP/Gold when defeated. No player-vs-player combat.</p>
+    </header>
+    <section class="play">
+      <canvas id="world" width="960" height="600"></canvas>
+      <aside class="panel hud">
+        <h2>Status</h2>
+        <pre id="status">Not joined</pre>
+      </aside>
+    </section>
+  </main>
+  <script type="module" src="/game.js"></script>
+</body>
+</html>
