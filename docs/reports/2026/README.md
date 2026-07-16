@@ -11,6 +11,10 @@
 
 ## Index
 
+- `2026-0717-markdown-documentation-audit.md`
+  - repo top、docs 索引、current plans、support boundary、sample01-47 catalog / roadmap / study guide、mtool/deploy 入口、全 Markdown 相対リンクを監査。current plan を sample47 後へ更新し、Firebird 恒久表現を合意済みscope完了へ揃え、欠落 README を追加。全1567 Markdown の相対file link 0 broken、現行doc anchor 0 broken、sample35-47 focused validator green。Status: `DONE_FULL_REPOSITORY_MD_AUDIT`。
+- `2026-0717-sample38-47-current-plan-history.md`
+  - `docs/current-plans.md` から完了済み Main Plan #952-#968 を退避し、sample38-47 first slice の完了境界と production non-goal を保存。Status: `ARCHIVED_DONE_HISTORY`。
 - `2026-0715-current-plan-history-after-rss-merge.md`
   - `docs/current-plans.md` から完了済みの Main Plan #901-#937 と Immediate Next Sequence through RSS-16 を履歴として退避。Firebird、standalone no-code、mobile/external no-code handoff、shared-state sync packet scope は合意済み範囲で完了し、shared-state sync は `master` まで merge 済み。current plan は次の product-scope selection だけを active にする。Status: `ARCHIVED_DONE_HISTORY`。
 - `2026-0715-ai-assisted-artifact-execution-route.md`

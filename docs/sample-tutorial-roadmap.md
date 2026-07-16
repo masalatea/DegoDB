@@ -1,7 +1,7 @@
 # Sample Tutorial Roadmap / sample 学習導線
 
 English companion:
-This roadmap defines the user-facing tutorial lane under `sample/tutorials/`. It explains the learning order from `sample01` through `sample26`, the design principles behind the packs, and the acceptance criteria for each stage.
+This roadmap defines the user-facing tutorial lane under `sample/tutorials/`. It explains the learning order from `sample01` through `sample47`, the design principles behind the packs, and the acceptance criteria for each stage.
 
 ## 目的
 
@@ -14,9 +14,9 @@ This roadmap defines the user-facing tutorial lane under `sample/tutorials/`. It
 
 - tutorial lane の正本は `sample/tutorials/` とする。
 - internal の complex/new form guard は `sample/internal-patterns/` に置き、tutorial 番号へ戻さない。
-- tutorial sample は file-based sample ではなく runtime pack を基本とする。
-- 各 pack は `compose.yaml`、`run.sh`、`seed/`、`README.md`、必要なら `reference/` を持つ。
-- canonical test target は `make sampleNN-pack-runtime-test` とする。
+- `sample01-32` は runtime pack を基本とし、`sample33+` は promotion、external handoff、dependency-free Node.js/static-first demo など主題に合う構造を使う。
+- 全 pack は `README.md` を持つ。runtime pack は `compose.yaml` / `run.sh` / `seed/`、file/artifact sample は `reference/` / `scripts/` など、検証に必要な最小構造を持つ。
+- runtime pack の canonical test target は `make sampleNN-pack-runtime-test`、後続 sample は README に記載した focused validator を正本にする。
 - `original-codes/` は host-side reference only とし、tutorial pack の runtime input には使わない。
 
 ## tutorial 設計原則
@@ -57,8 +57,27 @@ This roadmap defines the user-facing tutorial lane under `sample/tutorials/`. It
 | `sample24-ebook-public-reader-site-demo` | current | ebook public reader site demo | 公開本 / 章 / EPUB delivery metadata から HTML reader page と app 向け OpenAPI surface を publish する。EPUB は download link のみ扱う | `DATACLASS-PHP`, `DBACCESS-PHP`, `HTML-PAGE`, `OPENAPI-JSON` | `make sample24-pack-runtime-test` |
 | `sample25-ebook-editor-auth-cms-demo` | current | ebook editor auth CMS demo | 編集者向け chapter preview / draft update / publish API を legacy-compatible ProjectToken protected proxy として publish する。current static bearer baseline / full editor UI / user-role 管理 / revision history は扱わない | `DATACLASS-PHP`, `DBACCESS-PHP`, `OPENAPI-JSON`, `AUTH-PROXY-SERVER` | `make sample25-pack-runtime-test` |
 | `sample26-ebook-headless-cms-capstone` | current | ebook headless CMS capstone | public reader HTML、app OpenAPI、legacy-compatible ProjectToken editor proxy、project metadata bundle を 1 project から publish する | `DATACLASS-PHP`, `DBACCESS-PHP`, `HTML-PAGE`, `OPENAPI-JSON`, `AUTH-PROXY-SERVER`, `PROJECT-METADATA-BUNDLE` | `make sample26-pack-runtime-test` |
+| `sample27-app-local-persistence-demo` | current | App-local persistence | shared contract から App-local SQLite schema / DBAccess helper / DTO persistence を検証する | app-local SQLite artifact | `make sample27-pack-runtime-test` |
+| `sample28-no-code-data-app-mvp` | current | no-code data app MVP | canonical metadata / managed operation から generated list/detail/form runtime と publish flow を検証する | `NO-CODE-RUNTIME` | `make sample28-pack-runtime-test`, `make sample28-no-code-runtime-ui-smoke` |
+| `sample29-no-code-support-case-demo` | current | second no-code domain | support-case read model で generated no-code runtime の反復性を検証する | `NO-CODE-RUNTIME` | `make sample29-pack-runtime-test`, `make sample29-no-code-runtime-ui-smoke` |
+| `sample30-no-code-app-local-sync-demo` | current | no-code App-local sync | no-code action intent を managed-operation outbox と App-local SQLite handler へ接続する | no-code + sync artifacts | `make sample30-pack-runtime-test` |
+| `sample31-no-code-inventory-request-demo` | current | third no-code domain | inventory request domain で no-code runtime の domain-independent repeatability を検証する | `NO-CODE-RUNTIME` | `make sample31-pack-runtime-test`, `make sample31-no-code-runtime-ui-smoke` |
+| `sample32-no-code-ui-test-lab` | current | no-code UI contract lab | UI contract fixture と runtime pack で no-code UI testing boundary を検証する | UI contract fixtures | `make sample32-pack-runtime-test` |
 | `sample33-sqlite-to-mysql-promotion` | current | SQLite-to-MySQL promotion artifact chain | parent/record SQLite fixtureからmanifest、target schema、export、import checkpoint、verification、cutover、operator、rehearsal packageを接続する | `PROMOTION-REHEARSAL-PACKAGE` | `tests/Integration/Sample33SqliteMysqlPromotionTest.php` |
 | `sample34-sqlite-to-firebird-promotion` | current | SQLite-to-Firebird promotion path | canonical snapshot + SQLite inspection fixtureからFirebird local durable promotion contract、target schema plan、SQLite export、import rehearsalを生成し、opt-in Docker smokeでlive importとbackup-restoreまで確認する。local profile switch gateは明示的に残す | `SQLITE-FIREBIRD-PROMOTION-CONTRACT`, `FIREBIRD-PROMOTION-SMOKE` | `tests/Integration/Sample34SqliteFirebirdPromotionTest.php`, `make sample34-firebird-backup-restore-smoke-docker` |
+| `sample35-capacitor-artifact-import` | current | external app wrapper handoff | Capacitor-ready React app が Mtool artifact を直接 import できることを、native project生成なしで検証する | external app handoff fixtures | `node sample/tutorials/sample35-capacitor-artifact-import/scripts/validate-sample.mjs` |
+| `sample36-shared-state-sync-server-input` | current | sync server input packet | Node.js server owner 向け packet の authority / route / auth / state / event / fallback 境界を検証する | `sync-server-input.json` | `node sample/tutorials/sample36-shared-state-sync-server-input/scripts/validate-sample.mjs` |
+| `sample37-shared-state-sync-client-input` | current | sync client input packet | external client owner 向け room / state / realtime / fallback / reconnect 境界を検証する | `sync-client-input.json` | `node sample/tutorials/sample37-shared-state-sync-client-input/scripts/validate-sample.mjs` |
+| `sample38-shared-state-sync-node-runtime` | current | sync runtime reference | packet 消費、membership、revision conflict、room event、latest fetch、HTTP/SSE fallback を検証する | dependency-free Node.js runtime reference | README の 3 validator |
+| `sample39-shared-state-chat-demo` | current | shared-state chat domain | message append、image metadata、room isolation、conflict、secret-free event を検証する | chat domain state | `node sample/tutorials/sample39-shared-state-chat-demo/scripts/validate-sample.mjs` |
+| `sample40-ephemeral-room-chat-site` | current | ephemeral room chat site | URL room、24h message、7d inactive room、SQLite store、HTTP route、hardening boundary を検証する | dependency-free chat site | README の focused validator |
+| `sample41-simple-whiteboard` | current | whiteboard and room sync | drawing operations、room recreation、revision conflict、SSE、inactive clear を検証する | static-first whiteboard | README の 2 validator |
+| `sample42-room-shooter-game` | current | two-player room shooter | join、move、shoot、hit/HP、room-scoped SSE、Mtool artifact linkage を検証する | game input packet + Node.js demo | README の 2 validator |
+| `sample43-tank-survival-game` | current | multiplayer tank survival | unlimited join、movement、obstacles、bullets、HP/winner、inactive reset を検証する | game input packet + Node.js demo | README の 2 validator |
+| `sample44-raycast-fps-line-demo` | current | line-rendered raycast FPS | raycasting、turn、collision、shooting、defeat/winner、inactive reset を検証する | game input packet + Node.js demo | README の 2 validator |
+| `sample45-map-info-popup-site` | current | key-free map info site | structured location、marker/list popup、category filter、provider-free boundary を検証する | map handoff packet + local site | `node sample/tutorials/sample45-map-info-popup-site/scripts/validate-sample.mjs` |
+| `sample46-choice-adventure-game` | current | choice adventure | structured scenario、flipbook scene、keyboard/pointer choice、mock API、goal/game-over を検証する | scenario packet + static-first game | `node sample/tutorials/sample46-choice-adventure-game/scripts/validate-sample.mjs` |
+| `sample47-open-world-rpg-demo` | current | multiplayer room RPG | URL room、player/enemy state、combat/reward/regen、collision、SSE、artifact linkage を検証する | RPG input packet + Node.js demo | README の 2 validator |
 
 ## phase 分け
 
@@ -194,16 +213,42 @@ This roadmap defines the user-facing tutorial lane under `sample/tutorials/`. It
   - outputs は `DATACLASS-PHP`、`DBACCESS-PHP`、`HTML-PAGE`、`OPENAPI-JSON`、`AUTH-PROXY-SERVER` とし、checker が `PROJECT-METADATA-BUNDLE` export も検証する。
   - 本運用に必要な user / role 管理、audit log、revision history、approval workflow、upload、EPUB build、search、payment / DRM は Production Notes へ送る。
 
+### Phase 6. App-local and no-code
+
+- `sample27-32` は App-local persistence、generated no-code runtime、managed-operation sync、domain repeatability、UI contract testing を段階的に確認する。
+- `sample28` / `sample29` / `sample31` は browser UI smoke を持つが、外部 framework や native app ownership まで Mtool に含めない。
+
+### Phase 7. Database promotion
+
+- `sample33-34` は SQLite-first state を MySQL/MariaDB または Firebird local durable profile へ一方向に昇格する artifact/checkpoint lane とする。
+- automatic cutover、bidirectional sync、zero-downtime CDC は扱わない。
+
+### Phase 8. External handoff packets
+
+- `sample35-37` は React/Capacitor-ready consumer、sync server owner、sync client owner へ渡す artifact/packet の境界を検証する。
+- dependency install、native build、SDK generation、token storage、production deployment は external owner scope とする。
+
+### Phase 9. Shared-state runtime and domain demos
+
+- `sample38-44` は dependency-free Node.js reference runtime から chat、ephemeral room site、whiteboard、room game へ進む。
+- loopback server、in-process state、JSON/SQLite sample store は contract 検証用であり、production realtime infrastructure の claim には使わない。
+
+### Phase 10. Static-first information and game demos
+
+- `sample45-47` は map-like information site、choice adventure、multiplayer room RPG を通じて、domain packet と local UI/runtime の接続を確認する。
+- remote map provider、production art pipeline、auth/moderation/anti-cheat、public deployment は明示的な non-goal とする。
+
 ## 各 sample の受け入れ条件
 
 - `README.md` に次を明記する。
   - 役割
-  - seed される row
-  - import / sync / output の最小実行手順
-  - 生成物の置き場
-- `run.sh up` と `run.sh apply-seed` で fresh runtime を再現できる。
-- `reference/` は actual output compare 用に最小限だけ置く。
-- `tests/Integration/SampleN...Test.php` を追加し、`make sampleNN-pack-runtime-test` から呼べる。
+  - 入力 fixture / seed / packet と出力 artifact の境界
+  - 最小実行・検証手順
+  - production scope に含めないもの
+- runtime pack は `run.sh up` と `run.sh apply-seed` で fresh runtime を再現できる。
+- file/artifact sample は dependency-free focused validator または integration test で再現できる。
+- `reference/` は actual output、検証用 input packet、または出所が明確な fixture に限定する。
+- canonical gate は `make sampleNN-pack-runtime-test`、integration test、または各 README の focused validator のいずれかを持つ。
 - `make test` に入れるかどうかは、作成後に suite 時間と coverage を見て判断する。
 
 ## 実装順
@@ -222,7 +267,7 @@ This roadmap defines the user-facing tutorial lane under `sample/tutorials/`. It
 
 - `pattern01-14` は tutorial の代替ではなく、generator / migration contract を守る internal sample として扱う。
 - representative runtime project は引き続き `sample/legacy-projects/` に置き、tutorial numbering に混ぜない。
-- tutorial lane は `sample26` まで current とした。`sample20+` は ebook CMS tutorial / demo として、MySQL / MariaDB canonical profile に絞って追加する。
+- tutorial lane は `sample47` まで current。sample 全体 catalog は `sample/tutorials/README.md`、学習上の phase と境界はこの文書を正本にする。
 - `sample19-26` は runtime pack、reference output、checker、study guide、比較表、tutorial 導線まで含めて、サンプル教材として完了扱いにする。今後この lane を触る場合は、製品機能追加ではなく、読みやすさ、README / study guide 導線、scope cut 表現、sample 粒度揃えを基準にする。
 - `sample19-26` は当初の保守的な実装見立てより早く作れた。ざっくり 70-85% 程度早く、当初見立ての 15-30% 程度の時間で到達できたという評価。理由は production CMS ではなく Mtool sample として scope を切り、generated artifact を Mtool に任せ、seed / checker / reference 固定へ作業を集中できたため。詳細は `docs/reports/2026/2026-0619-ebook-headless-cms-sample-plan.md` の Implementation Retrospective を参照する。
 - Mtool の基本方針は、複雑なものを core flow で全部扱うことではなく、正規化・単純化できる大部分のケースを最適化し、そこから外れるものを例外として扱うことに置く。`sample19-26` が早く作れたことは、この方針に沿った結果として記録する。

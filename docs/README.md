@@ -127,6 +127,8 @@ detail doc だけを読んで mainline を再構成するのは current reading 
   - sample、test、contract gate が現在何を実証しているかを整理する matrix
 - [Compatibility And Output Support / 対応範囲と出力サポート](compatibility-and-output-support.md)
   - 現行対応、検証対象、旧実装参照、将来候補を分けた説明
+- [Mtool Positioning / Mtool の位置づけ](mtool-positioning.md)
+  - ORM-like tool との違いを含め、metadata-driven output generator としての現在位置を整理する
 - [JSON To DB Entrance / JSON から DB 設計へ入る入口](json-to-db-entrance.md)
   - 初期構想に含まれる optional pre-design entrance。JSON file / JSON API cache / JSON config から AI-readable な DB design draft を作り、DB-first mainline へ入る。runtime / generator 機能ではない
 - [AI Task-Packet Workflow / AI task packet ワークフロー](ai-task-packet-workflow.md)
@@ -218,6 +220,8 @@ detail doc だけを読んで mainline を再構成するのは current reading 
   - sample28 の generated no-code Web preview、publish candidate approval、current/alias preview URL、runtime submit / outbox handoff を触る入口
 - [No-Code L1 Sample Qualification Checklist / L1 sample 認定基準](no-code-l1-sample-qualification-checklist.md)
   - sample UI を bounded L1 entry として認定するための schema / screen / action / authority / mutation / test / exclusion の恒久 checklist
+- [No-Code UI Testing / no-code UI testing](no-code-ui-testing.md)
+  - generated no-code UI の contract、browser smoke、mutation gate、test evidence の読み方
 - [Storage And State Model / 保存先と状態モデル](storage-and-state-model.md)
   - `config_db`、artifact、`work/` の state map
 - [Security And Data Handling / security と data handling](security-and-data-handling.md)
