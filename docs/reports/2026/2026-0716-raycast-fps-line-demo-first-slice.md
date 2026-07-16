@@ -71,6 +71,7 @@ The validator checks:
 - wall collision;
 - raycast wall hit;
 - forward-angle shot and HP reduction;
+- transient shot line / muzzle flash feedback;
 - defeat and last-alive winner;
 - 7-day inactive reset;
 - same-room SSE `fps.updated`;

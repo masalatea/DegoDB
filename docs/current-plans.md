@@ -19,7 +19,7 @@ When someone asks for "the plan list", answer from this section first. / 「計�
 - RSS 後の bundle / manifest / validation checklist 整理は完了済み。
 - 外部 consumer handoff readiness と AI-assisted external app handoff checklist は完了済み。
 - 全体整理 pass 1〜5 の初回周回は完了済み。
-- 次は、map info popup site sample の first slice を確認し、production hardening またはPR checkpointを選ぶ。
+- 次は、choice adventure game sample の first slice を確認し、production hardening またはPR checkpointを選ぶ。
 
 Current main status:
 
@@ -27,7 +27,7 @@ Current main status:
 - The post-RSS bundle / manifest / validation checklist organization is complete.
 - External consumer handoff readiness and the AI-assisted external app handoff checklist are complete.
 - The first multi-pass cleanup sequence, passes 1 through 5, is complete.
-- Next is reviewing the first slice of a map info popup site sample and choosing production hardening or a PR checkpoint.
+- Next is reviewing the first slice of a choice adventure game sample and choosing production hardening or a PR checkpoint.
 
 | Order | Work unit / 作業の塊 | Commit unit / コミット単位 | Status | Next decision / 次の判断 |
 | --- | --- | --- | --- | --- |
@@ -46,6 +46,8 @@ Current main status:
 | 964 | Tank survival game sample / 戦車 survival game sample | Add a dependency-free multiplayer tank survival sample that rides on Mtool shared-state handoff structure, with unlimited join, mid-game join, omnidirectional movement, obstacles, forward bullets, HP/explosion, last-alive winner, and 7-day inactive reset | `FIRST_SLICE_DONE` | `sample43-tank-survival-game` validates both direct runtime behavior and Mtool artifact linkage; no auth, matchmaking, anti-cheat, production tick loop, prediction/reconciliation, persistence, or public deployment |
 | 965 | Raycast FPS line demo sample / raycast FPS line demo sample | Add a dependency-free classic raycasting FPS sample that rides on Mtool shared-state handoff structure, with line-only canvas rendering, fine-grained 5-degree turning, grid wall collision, forward-angle shooting, HP/defeat, last-alive winner, and 7-day inactive reset | `FIRST_SLICE_DONE` | `sample44-raycast-fps-line-demo` validates both direct runtime behavior and Mtool artifact linkage; no WebGL, textures, auth, matchmaking, anti-cheat, production tick loop, prediction/reconciliation, persistence, or public deployment |
 | 966 | Map info popup site sample / map info popup site sample | Add a dependency-free local map-like information site sample with structured location data, markers, marker/list click popups, category filtering, and a key-free Mtool handoff packet | `FIRST_SLICE_DONE` | `sample45-map-info-popup-site` validates local runtime behavior and Mtool artifact boundaries; no Google Maps API key, remote map tiles in validation, Places API, geocoding, routing, or production provider integration |
+| 967 | Choice adventure game sample / 昔ながらの選択式 adventure game sample | Add a static-first old-school choice adventure sample with opening, CSS flipbook scene panels, keyboard up/down/enter, mouse/touch choices, adventure API contract with mock adapter, five-choice goal path, game over, back/restart, and Mtool scenario packet | `FIRST_SLICE_DONE` | `sample46-choice-adventure-game` validates structured scenario data and API-style next-scene responses; no Node.js runtime, peer/player communication, database, external image assets, production writer workflow, or production art pipeline |
+| 968 | Open world RPG demo sample / open world RPG demo sample | Add a dependency-free Node.js communication RPG sample with URL room, multiple players, PvP disabled, enemy spawn/tick/weak attack, sword attack, EXP/Gold reward, idle HP regen, obstacles, HUD, and room-scoped SSE `rpg.updated` | `FIRST_SLICE_DONE` | `sample47-open-world-rpg-demo` validates runtime behavior and Mtool artifact linkage; no auth, moderation, anti-cheat, production persistence, public deployment, pathfinding sophistication, or PvP |
 
 ### Candidate Next Lanes / 次候補
 

@@ -1,0 +1,126 @@
+{
+  "schema_version": "open_world_rpg_input.v1",
+  "generated_by": {
+    "tool": "mtool",
+    "artifact": "open_world_rpg_input",
+    "source_packets": [
+      "shared_state_sync_server_input",
+      "shared_state_sync_client_input"
+    ]
+  },
+  "sample": "sample47-open-world-rpg-demo",
+  "runtime_boundary": {
+    "owner": "external_game_runtime_owner",
+    "mtool_responsibility": [
+      "emit structured shared-state handoff packets",
+      "emit domain-specific RPG state contract",
+      "validate that the sample runtime consumes the contract"
+    ],
+    "external_runtime_responsibility": [
+      "serve the game loop",
+      "own enemy AI and anti-cheat decisions",
+      "own production persistence",
+      "own production deployment"
+    ],
+    "production_runtime_generated": false
+  },
+  "shared_state_mapping": {
+    "state_key": "open_world_rpg",
+    "room_identifier": "url_room_slug",
+    "revision_required": true,
+    "fanout_scope": "room",
+    "transport": {
+      "primary": "sse_http",
+      "event": "rpg.updated"
+    }
+  },
+  "room_policy": {
+    "max_players": null,
+    "pvp_enabled": false,
+    "room_slug_source": "url",
+    "cross_room_broadcast_allowed": false
+  },
+  "game_rules": {
+    "world": {
+      "width": 1600,
+      "height": 1000
+    },
+    "player_hp": 100,
+    "idle_regen_ms": 1600,
+    "player_regen_per_tick": 1,
+    "enemy_hp": 45,
+    "enemy_speed": 9,
+    "enemy_touch_damage": 4,
+    "enemy_spawn_min_distance": 180,
+    "enemy_spawn_max_distance": 360,
+    "max_enemies": 8,
+    "obstacles": [
+      "trees",
+      "rocks",
+      "pond"
+    ],
+    "sword_range": 54,
+    "sword_damage": 25,
+    "reward_exp": 10,
+    "reward_gold": 6,
+    "commands": [
+      "move",
+      "attack"
+    ],
+    "events": [
+      "rpg.updated"
+    ]
+  },
+  "state_model": {
+    "entities": [
+      "players",
+      "enemies",
+      "next_enemy_seq",
+      "obstacles",
+      "effects"
+    ],
+    "player_fields": [
+      "id",
+      "name",
+      "hp",
+      "max_hp",
+      "exp",
+      "gold",
+      "level",
+      "x",
+      "y",
+      "facing",
+      "attacking_until"
+    ],
+    "enemy_fields": [
+      "id",
+      "hp",
+      "max_hp",
+      "x",
+      "y",
+      "target_player_id"
+    ]
+  },
+  "validation": {
+    "required_checks": [
+      "room_join_spawns_player",
+      "enemy_population_spawns_away_from_player",
+      "obstacle_collision_blocks_player_movement",
+      "move_command_updates_position",
+      "attack_command_damages_enemy",
+      "enemy_defeat_rewards_exp_and_gold",
+      "enemy_tick_moves_and_weakly_attacks",
+      "idle_player_regenerates_hp",
+      "pvp_is_forbidden",
+      "same_room_sse_event",
+      "packet_contains_no_tokens_or_secrets"
+    ]
+  },
+  "forbidden_actions": [
+    "enable_player_vs_player_damage",
+    "store_sso_tokens_in_game_packet",
+    "broadcast_to_all_rooms",
+    "claim_production_game_server_generation",
+    "claim_matchmaking_or_anticheat_support"
+  ]
+}

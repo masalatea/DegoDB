@@ -48,12 +48,17 @@
     "cross_room_broadcast_allowed": false
   },
   "game_rules": {
+    "schema_version": "room_shooter_game.v2.local_bottom_duel",
     "arena": {
       "width": 900,
       "height": 560
     },
     "player_hp": 100,
     "shot_damage": 25,
+    "shot_hit_radius": 32,
+    "perspective": "local_player_bottom_opponent_top",
+    "shot_direction": "local_player_upward",
+    "projectile_tick": "server_side_interval",
     "commands": [
       "move",
       "shoot"
@@ -91,6 +96,7 @@
       "mtool_server_packet_can_be_emitted",
       "mtool_client_packet_can_be_emitted",
       "game_contract_matches_runtime_rules",
+      "old_local_room_state_resets_when_runtime_rule_changes",
       "room_join_limit_matches_contract",
       "commands_match_contract",
       "event_name_matches_contract",

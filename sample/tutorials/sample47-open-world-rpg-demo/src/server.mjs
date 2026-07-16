@@ -3,7 +3,7 @@ import os from 'node:os';
 import path from 'node:path';
 import fs from 'node:fs';
 import { fileURLToPath } from 'node:url';
-import { TankRoomStore, normalizeRoomSlug } from './tank-room-store.mjs';
+import { RpgRoomStore, normalizeRoomSlug } from './rpg-room-store.mjs';
 
 const sampleRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 
@@ -42,8 +42,8 @@ function readJson(request) {
 }
 
 function createDefaultStore({ dataDir }) {
-  return new TankRoomStore({
-    filePath: path.join(dataDir, 'tank-room-store.json')
+  return new RpgRoomStore({
+    filePath: path.join(dataDir, 'rpg-room-store.json')
   });
 }
 
@@ -73,7 +73,7 @@ function createServer({ store, tickMs = null } = {}) {
     if (!subscribers) {
       return;
     }
-    const event = `event: tank.updated\ndata: ${JSON.stringify({ room_slug: roomSlug, revision: state.revision })}\n\n`;
+    const event = `event: rpg.updated\ndata: ${JSON.stringify({ room_slug: roomSlug, revision: state.revision })}\n\n`;
     for (const response of subscribers) {
       response.write(event);
     }
@@ -86,7 +86,7 @@ function createServer({ store, tickMs = null } = {}) {
         const roomSlug = normalizeRoomSlug(decodeURIComponent(url.pathname.slice('/r/'.length)));
         store.openRoom(roomSlug);
         const html = fs.readFileSync(path.join(sampleRoot, 'public/index.html'), 'utf8');
-        const roomScript = `<script>globalThis.SAMPLE43_ROOM_SLUG = ${JSON.stringify(roomSlug)};</script>`;
+        const roomScript = `<script>globalThis.SAMPLE47_ROOM_SLUG = ${JSON.stringify(roomSlug)};</script>`;
         send(response, 200, html.replace('<script type="module" src="/game.js"></script>', `${roomScript}\n  <script type="module" src="/game.js"></script>`), 'text/html; charset=utf-8');
         return;
       }
@@ -166,12 +166,12 @@ function createServer({ store, tickMs = null } = {}) {
 function startServer({
   port = Number(process.env.PORT ?? 8790),
   host = '127.0.0.1',
-  dataDir = process.env.SAMPLE43_DATA_DIR ?? path.join(os.tmpdir(), 'sample43-tank-survival-game')
+  dataDir = process.env.SAMPLE47_DATA_DIR ?? path.join(os.tmpdir(), 'sample47-open-world-rpg-demo')
 } = {}) {
   const store = createDefaultStore({ dataDir });
-  const server = createServer({ store, tickMs: 80 });
+  const server = createServer({ store, tickMs: 180 });
   server.listen(port, host, () => {
-    console.log(`sample43 listening on http://${host}:${port}/r/general`);
+    console.log(`sample47 listening on http://${host}:${port}/r/general`);
     console.log(`data dir: ${dataDir}`);
   });
   return { server, store, dataDir };

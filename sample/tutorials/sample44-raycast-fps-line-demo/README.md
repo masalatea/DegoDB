@@ -1,6 +1,6 @@
 # Sample 44: Raycast FPS Line Demo
 
-This sample is a cut-out-friendly classic raycasting FPS line demo.
+This sample is a cut-out-friendly classic raycasting FPS line demo. Multiple players can join the same room and battle.
 
 It follows the sample36〜38 shared-state handoff direction and the sample42 / sample43 game sample direction: Mtool-shaped input packets, URL-named rooms, loopback Node.js server, and room-scoped SSE updates.
 
@@ -8,6 +8,7 @@ It follows the sample36〜38 shared-state handoff direction and the sample42 / s
 
 - Open a room by URL.
 - Join as a player.
+- Let multiple players join the same room and battle.
 - Render a pseudo-3D first-person view using canvas lines only.
 - Move forward / backward.
 - Rotate by small 5-degree steps, not just 90-degree turns.
@@ -36,6 +37,7 @@ The server is intentionally simple and authoritative for the validated actions:
 - forward/backward move command;
 - wall collision;
 - forward-angle shoot command;
+- transient shot line / muzzle flash feedback;
 - HP reduction and defeat state;
 - 7-day inactive room reset;
 - SSE `fps.updated` event.
