@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sample 43 Tank Survival</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <main class="app">
+    <header class="panel">
+      <div>
+        <h1>Tank Survival</h1>
+        <p id="roomLabel">Room: local</p>
+      </div>
+      <button id="join">Join as tank</button>
+      <p class="hint">Turn with ←/→ or A/D. Drive with ↑/↓ or W/S. Fire forward with Space. New tanks may join mid-game.</p>
+    </header>
+    <canvas id="arena" width="960" height="600"></canvas>
+    <section class="panel">
+      <pre id="status">Not joined</pre>
+    </section>
+  </main>
+  <script type="module" src="/game.js"></script>
+</body>
+</html>
