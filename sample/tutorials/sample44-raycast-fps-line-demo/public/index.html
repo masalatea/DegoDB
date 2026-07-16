@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sample 44 Raycast FPS Line Demo</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <main class="app">
+    <header class="panel">
+      <div>
+        <h1>Raycast FPS Line Demo</h1>
+        <p id="roomLabel">Room: local</p>
+      </div>
+      <button id="join">Join FPS room</button>
+      <p class="hint">W/S move. A/D or ←/→ rotate by small angles. Space shoots forward. Rendering is only canvas lines.</p>
+    </header>
+    <canvas id="view" width="960" height="540"></canvas>
+    <section class="panel split">
+      <canvas id="map" width="240" height="220"></canvas>
+      <pre id="status">Not joined</pre>
+    </section>
+  </main>
+  <script type="module" src="/game.js"></script>
+</body>
+</html>

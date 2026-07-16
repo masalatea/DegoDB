@@ -19,7 +19,7 @@ When someone asks for "the plan list", answer from this section first. / 「計�
 - RSS 後の bundle / manifest / validation checklist 整理は完了済み。
 - 外部 consumer handoff readiness と AI-assisted external app handoff checklist は完了済み。
 - 全体整理 pass 1〜5 の初回周回は完了済み。
-- 次は、戦車 survival game sample の first slice を確認し、production hardening またはPR checkpointを選ぶ。
+- 次は、raycast FPS line demo sample の first slice を確認し、production hardening またはPR checkpointを選ぶ。
 
 Current main status:
 
@@ -27,7 +27,7 @@ Current main status:
 - The post-RSS bundle / manifest / validation checklist organization is complete.
 - External consumer handoff readiness and the AI-assisted external app handoff checklist are complete.
 - The first multi-pass cleanup sequence, passes 1 through 5, is complete.
-- Next is reviewing the first slice of a tank survival game sample and choosing production hardening or a PR checkpoint.
+- Next is reviewing the first slice of a raycast FPS line demo sample and choosing production hardening or a PR checkpoint.
 
 | Order | Work unit / 作業の塊 | Commit unit / コミット単位 | Status | Next decision / 次の判断 |
 | --- | --- | --- | --- | --- |
@@ -44,6 +44,7 @@ Current main status:
 | 962 | Whiteboard room sync checkpoint / whiteboard room sync checkpoint | Decide whether to PR the hardening checklist or start the next sample | `ACTIVE_NEXT` | Current room sync has loopback JSON store and SSE `board.updated` push; no auth, moderation, production persistence, or public deployment |
 | 963 | Room shooter game sample / 対戦式シューティング game sample | Add a dependency-free two-player room shooter sample that rides on Mtool shared-state handoff structure, with a game input packet, join, move, shoot, hit/HP state, and room-scoped SSE `game.updated` | `FIRST_SLICE_DONE` | `sample42-room-shooter-game` validates both direct runtime behavior and Mtool artifact linkage; no matchmaking, auth, anti-cheat, production tick loop, prediction/reconciliation, persistence, or public deployment |
 | 964 | Tank survival game sample / 戦車 survival game sample | Add a dependency-free multiplayer tank survival sample that rides on Mtool shared-state handoff structure, with unlimited join, mid-game join, omnidirectional movement, obstacles, forward bullets, HP/explosion, last-alive winner, and 7-day inactive reset | `FIRST_SLICE_DONE` | `sample43-tank-survival-game` validates both direct runtime behavior and Mtool artifact linkage; no auth, matchmaking, anti-cheat, production tick loop, prediction/reconciliation, persistence, or public deployment |
+| 965 | Raycast FPS line demo sample / raycast FPS line demo sample | Add a dependency-free classic raycasting FPS sample that rides on Mtool shared-state handoff structure, with line-only canvas rendering, fine-grained 5-degree turning, grid wall collision, forward-angle shooting, HP/defeat, last-alive winner, and 7-day inactive reset | `FIRST_SLICE_DONE` | `sample44-raycast-fps-line-demo` validates both direct runtime behavior and Mtool artifact linkage; no WebGL, textures, auth, matchmaking, anti-cheat, production tick loop, prediction/reconciliation, persistence, or public deployment |
 
 ### Candidate Next Lanes / 次候補
 
