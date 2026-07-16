@@ -31,7 +31,7 @@ const store = new TankRoomStore({
   filePath: path.join(tempRoot, 'tank-room-store.json'),
   now: () => currentNow
 });
-const server = createServer({ store });
+const server = createServer({ store, tickMs: 25 });
 
 function listen() {
   return new Promise((resolve, reject) => {
@@ -175,6 +175,39 @@ try {
   });
   assert.equal(shot.response.status, 200, 'fire command succeeds');
   assert.equal(shot.payload.state.players[targetId].hp, TANK_RULES.player_hp - TANK_RULES.bullet_damage, 'forward bullet hit reduces opponent HP');
+
+  const rawForMovingBullet = store.getRawState();
+  rawForMovingBullet.rooms['tank-arena'].game.players[playerId].x = 120;
+  rawForMovingBullet.rooms['tank-arena'].game.players[playerId].y = 520;
+  rawForMovingBullet.rooms['tank-arena'].game.players[playerId].angle = 0;
+  rawForMovingBullet.rooms['tank-arena'].game.players[targetId].x = 820;
+  rawForMovingBullet.rooms['tank-arena'].game.players[targetId].y = 520;
+  rawForMovingBullet.rooms['tank-arena'].game.players[targetId].hp = TANK_RULES.bullet_damage;
+  rawForMovingBullet.rooms['tank-arena'].game.players[targetId].alive = true;
+  rawForMovingBullet.rooms['tank-arena'].game.bullets = [];
+  store.write(rawForMovingBullet);
+  const flyingShot = await jsonFetch(baseUrl, '/api/rooms/tank-arena/commands', {
+    method: 'POST',
+    body: {
+      player_id: playerId,
+      command: { type: 'fire' }
+    }
+  });
+  assert.equal(flyingShot.response.status, 200, 'long-range fire command succeeds');
+  assert.equal(flyingShot.payload.state.bullets.length, 1, 'long-range shot remains visible as a flying bullet');
+  const firstBulletX = flyingShot.payload.state.bullets[0].x;
+  await new Promise(resolve => setTimeout(resolve, 80));
+  const tickedState = await jsonFetch(baseUrl, '/api/rooms/tank-arena/state');
+  assert.equal(tickedState.payload.bullets.length >= 1, true, 'server tick keeps the bullet in state while it flies');
+  assert.equal(tickedState.payload.bullets[0].x > firstBulletX, true, 'server tick advances the bullet without another player command');
+  let hitState = tickedState.payload;
+  const hitDeadline = Date.now() + 1200;
+  while (Date.now() < hitDeadline && hitState.players[targetId].alive) {
+    await new Promise(resolve => setTimeout(resolve, 40));
+    hitState = (await jsonFetch(baseUrl, '/api/rooms/tank-arena/state')).payload;
+  }
+  assert.equal(hitState.players[targetId].alive, false, 'flying bullet eventually hits and destroys the target tank');
+  assert.equal(hitState.explosions.some(explosion => explosion.player_id === targetId), true, 'destroyed target creates an explosion');
 
   const rawForWin = store.getRawState();
   rawForWin.rooms['tank-arena'].game.players[playerId].alive = true;

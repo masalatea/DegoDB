@@ -8,9 +8,9 @@ It follows the sample36〜38 shared-state handoff direction and the sample40 / s
 
 - Open a room by URL.
 - Join as a player.
-- Move in a small arena.
-- Shoot projectiles.
-- Hit the opponent and reduce HP.
+- Move in a small arena while always seeing yourself at the bottom and the opponent above.
+- Shoot upward projectiles from the local player view.
+- Hit the opponent with a forgiving line-segment projectile check and reduce HP.
 - Receive room-scoped game state updates.
 
 ## First-slice implementation
@@ -27,6 +27,7 @@ The server is intentionally simple and authoritative for the validated actions:
 - player join;
 - movement command;
 - shoot command;
+- server-side projectile tick;
 - projectile hit resolution;
 - SSE `game.updated` event.
 

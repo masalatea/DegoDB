@@ -90,7 +90,9 @@ try {
 
   const roomPage = await fetch(`${baseUrl}/r/FPS%20Room`);
   assert.equal(roomPage.status, 200, 'room page loads');
-  assert.match(await roomPage.text(), /SAMPLE44_ROOM_SLUG/, 'room page injects room slug');
+  const roomHtml = await roomPage.text();
+  assert.match(roomHtml, /SAMPLE44_ROOM_SLUG/, 'room page injects room slug');
+  assert.match(roomHtml, /Multiple players can join the same room and battle/, 'room page explains multiplayer battle');
 
   const join1 = await jsonFetch(baseUrl, '/api/rooms/fps-room/join', {
     method: 'POST',
@@ -225,6 +227,9 @@ try {
   assert.match(js, /fieldOfView/, 'client uses field of view');
   assert.match(js, /turnDegrees = 5/, 'client turns in fine-grained increments');
   assert.match(js, /lineTo/, 'client renders lines');
+  assert.match(js, /triggerShotEffect/, 'client shows shot visual feedback');
+  assert.match(js, /drawShotEffect/, 'client draws shot visual feedback');
+  assert.match(js, /shotEffectUntil/, 'client tracks transient shot visual effect');
   assert.doesNotMatch(js, /WebGLRenderingContext|three/i, 'client must not require WebGL or Three.js');
   assert.match(js, /AudioContext/, 'client can synthesize sample sound without audio assets');
   assert.match(js, /EventSource/, 'client subscribes to SSE events');

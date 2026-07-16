@@ -6,13 +6,17 @@ const PLAYER_RADIUS = 16;
 const PLAYER_SPEED = 24;
 const SHOT_SPEED = 48;
 const SHOT_DAMAGE = 25;
+const SHOT_HIT_RADIUS = PLAYER_RADIUS + 16;
+const GAME_SCHEMA_VERSION = 'room_shooter_game.v2.local_bottom_duel';
 const GAME_RULES = Object.freeze({
+  schema_version: GAME_SCHEMA_VERSION,
   max_players: 2,
   player_hp: 100,
   player_radius: PLAYER_RADIUS,
   player_speed: PLAYER_SPEED,
   shot_speed: SHOT_SPEED,
   shot_damage: SHOT_DAMAGE,
+  shot_hit_radius: SHOT_HIT_RADIUS,
   arena: ARENA,
   commands: ['move', 'shoot'],
   events: ['game.updated']
@@ -40,6 +44,7 @@ function defaultState() {
 
 function initialGame(roomSlug) {
   return {
+    schema_version: GAME_SCHEMA_VERSION,
     room_slug: roomSlug,
     revision: 0,
     players: {},
@@ -54,8 +59,36 @@ function clamp(value, min, max) {
 
 function playerSpawn(playerNumber) {
   return playerNumber === 1
-    ? { x: 120, y: ARENA.height / 2, facing: 'right' }
-    : { x: ARENA.width - 120, y: ARENA.height / 2, facing: 'left' };
+    ? { x: ARENA.width / 2, y: ARENA.height - 90, facing: 'up' }
+    : { x: ARENA.width / 2, y: 90, facing: 'down' };
+}
+
+function attackDirectionFor(playerId) {
+  return playerId === 'p2' ? 'down' : 'up';
+}
+
+function vectorForDirection(direction) {
+  return {
+    up: [0, -SHOT_SPEED],
+    down: [0, SHOT_SPEED],
+    left: [-SHOT_SPEED, 0],
+    right: [SHOT_SPEED, 0]
+  }[direction] ?? [0, -SHOT_SPEED];
+}
+
+function distancePointToSegment(point, start, end) {
+  const dx = end.x - start.x;
+  const dy = end.y - start.y;
+  const lengthSquared = dx * dx + dy * dy;
+  if (lengthSquared === 0) {
+    return Math.hypot(point.x - start.x, point.y - start.y);
+  }
+  const t = clamp(((point.x - start.x) * dx + (point.y - start.y) * dy) / lengthSquared, 0, 1);
+  const closest = {
+    x: start.x + t * dx,
+    y: start.y + t * dy
+  };
+  return Math.hypot(point.x - closest.x, point.y - closest.y);
 }
 
 export class ShooterRoomStore {
@@ -78,7 +111,7 @@ export class ShooterRoomStore {
       recreate_count: 0
     };
     let room = state.rooms[roomSlug];
-    if (!room) {
+    if (!room || room.game?.schema_version !== GAME_SCHEMA_VERSION) {
       registry.recreate_count += 1;
       registry.last_recreated_at = now;
       room = {
@@ -148,7 +181,7 @@ export class ShooterRoomStore {
     if (command?.type === 'move') {
       this.movePlayer(player, command.direction);
     } else if (command?.type === 'shoot') {
-      this.shoot(room.game, player, command.direction ?? player.facing, now);
+      this.shoot(room.game, player, now);
     } else {
       return { ok: false, error: 'unsupported_command', state: clone(room.game) };
     }
@@ -160,6 +193,27 @@ export class ShooterRoomStore {
     return { ok: true, state: clone(room.game) };
   }
 
+  advanceActiveRooms() {
+    const state = this.read();
+    const updatedRooms = [];
+    for (const [roomSlug, room] of Object.entries(state.rooms)) {
+      if ((room.game.shots?.length ?? 0) === 0) {
+        continue;
+      }
+      this.advanceShots(room.game);
+      room.game.revision += 1;
+      room.last_activity_at = this.now();
+      updatedRooms.push({
+        room_slug: roomSlug,
+        state: clone(room.game)
+      });
+    }
+    if (updatedRooms.length > 0) {
+      this.write(state);
+    }
+    return updatedRooms;
+  }
+
   movePlayer(player, direction) {
     const delta = {
       up: [0, -PLAYER_SPEED],
@@ -168,19 +222,15 @@ export class ShooterRoomStore {
       right: [PLAYER_SPEED, 0]
     }[direction] ?? [0, 0];
     if (direction && ['up', 'down', 'left', 'right'].includes(direction)) {
-      player.facing = direction;
+      player.facing = attackDirectionFor(player.id);
     }
     player.x = clamp(player.x + delta[0], PLAYER_RADIUS, ARENA.width - PLAYER_RADIUS);
     player.y = clamp(player.y + delta[1], PLAYER_RADIUS, ARENA.height - PLAYER_RADIUS);
   }
 
-  shoot(game, player, direction, now) {
-    const vector = {
-      up: [0, -SHOT_SPEED],
-      down: [0, SHOT_SPEED],
-      left: [-SHOT_SPEED, 0],
-      right: [SHOT_SPEED, 0]
-    }[direction] ?? [SHOT_SPEED, 0];
+  shoot(game, player, now) {
+    const direction = attackDirectionFor(player.id);
+    const vector = vectorForDirection(direction);
     player.facing = direction;
     game.shots.push({
       id: `${player.id}-${now}-${game.shots.length + 1}`,
@@ -201,10 +251,12 @@ export class ShooterRoomStore {
         x: shot.x + shot.vx,
         y: shot.y + shot.vy
       };
+      const shotStart = { x: shot.x, y: shot.y };
+      const shotEnd = { x: moved.x, y: moved.y };
       const target = Object.values(game.players).find(player => (
         player.id !== moved.owner_id &&
         player.hp > 0 &&
-        Math.hypot(player.x - moved.x, player.y - moved.y) <= PLAYER_RADIUS + 6
+        distancePointToSegment({ x: player.x, y: player.y }, shotStart, shotEnd) <= SHOT_HIT_RADIUS
       ));
       if (target) {
         target.hp = Math.max(0, target.hp - SHOT_DAMAGE);

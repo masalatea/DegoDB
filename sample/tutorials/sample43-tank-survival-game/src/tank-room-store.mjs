@@ -109,6 +109,21 @@ function pointInsideRect(point, rect) {
   );
 }
 
+function distancePointToSegment(point, start, end) {
+  const dx = end.x - start.x;
+  const dy = end.y - start.y;
+  const lengthSquared = dx * dx + dy * dy;
+  if (lengthSquared === 0) {
+    return Math.hypot(point.x - start.x, point.y - start.y);
+  }
+  const t = clamp(((point.x - start.x) * dx + (point.y - start.y) * dy) / lengthSquared, 0, 1);
+  const closest = {
+    x: start.x + t * dx,
+    y: start.y + t * dy
+  };
+  return Math.hypot(point.x - closest.x, point.y - closest.y);
+}
+
 function collidesWithObstacle(tank) {
   return OBSTACLES.some(obstacle => rectsOverlap(tankRect(tank), obstacle));
 }
@@ -239,6 +254,32 @@ export class TankRoomStore {
     return { ok: true, state: clone(room.game) };
   }
 
+  advanceActiveRooms() {
+    const now = this.now();
+    const state = this.read();
+    const updatedRooms = [];
+    for (const [roomSlug, room] of Object.entries(state.rooms)) {
+      if (now - room.last_activity_at >= INACTIVE_RESET_MS) {
+        continue;
+      }
+      if ((room.game.bullets?.length ?? 0) === 0) {
+        continue;
+      }
+      this.advanceBullets(room.game, now);
+      this.updateWinner(room.game);
+      room.game.revision += 1;
+      room.last_activity_at = now;
+      updatedRooms.push({
+        room_slug: roomSlug,
+        state: clone(room.game)
+      });
+    }
+    if (updatedRooms.length > 0) {
+      this.write(state);
+    }
+    return updatedRooms;
+  }
+
   drive(player, command) {
     if (command.angle !== undefined) {
       player.angle = normalizeAngle(command.angle);
@@ -281,6 +322,8 @@ export class TankRoomStore {
         x: bullet.x + bullet.vx,
         y: bullet.y + bullet.vy
       };
+      const bulletStart = { x: bullet.x, y: bullet.y };
+      const bulletEnd = { x: moved.x, y: moved.y };
       if (moved.x < 0 || moved.x > ARENA.width || moved.y < 0 || moved.y > ARENA.height) {
         continue;
       }
@@ -290,7 +333,7 @@ export class TankRoomStore {
       const target = Object.values(game.players).find(player => (
         player.id !== moved.owner_id &&
         player.alive &&
-        Math.hypot(player.x - moved.x, player.y - moved.y) <= TANK_SIZE / 2 + 6
+        distancePointToSegment({ x: player.x, y: player.y }, bulletStart, bulletEnd) <= TANK_SIZE / 2 + 6
       ));
       if (target) {
         target.hp = Math.max(0, target.hp - BULLET_DAMAGE);

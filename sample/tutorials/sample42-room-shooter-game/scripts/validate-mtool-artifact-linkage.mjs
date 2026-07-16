@@ -52,9 +52,14 @@ assert.equal(gamePacket.shared_state_mapping?.fanout_scope, 'room', 'fanout scop
 assert.equal(gamePacket.shared_state_mapping?.transport?.event, GAME_RULES.events[0], 'event name must match runtime rule');
 assert.equal(gamePacket.room_policy?.max_players, GAME_RULES.max_players, 'max players must match runtime rule');
 assert.equal(gamePacket.room_policy?.cross_room_broadcast_allowed, false, 'cross-room broadcast must be forbidden');
+assert.equal(gamePacket.game_rules?.schema_version, GAME_RULES.schema_version, 'game schema version must match runtime rule');
 assert.deepEqual(gamePacket.game_rules?.arena, GAME_RULES.arena, 'arena must match runtime rule');
 assert.equal(gamePacket.game_rules?.player_hp, GAME_RULES.player_hp, 'player HP must match runtime rule');
 assert.equal(gamePacket.game_rules?.shot_damage, GAME_RULES.shot_damage, 'shot damage must match runtime rule');
+assert.equal(gamePacket.game_rules?.shot_hit_radius, GAME_RULES.shot_hit_radius, 'shot hit radius must match runtime rule');
+assert.equal(gamePacket.game_rules?.perspective, 'local_player_bottom_opponent_top', 'perspective rule must be explicit');
+assert.equal(gamePacket.game_rules?.shot_direction, 'local_player_upward', 'local shot direction must be explicit');
+assert.equal(gamePacket.game_rules?.projectile_tick, 'server_side_interval', 'projectile tick rule must be explicit');
 assert.deepEqual(gamePacket.game_rules?.commands, GAME_RULES.commands, 'commands must match runtime rule');
 assert.deepEqual(gamePacket.game_rules?.events, GAME_RULES.events, 'events must match runtime rule');
 
@@ -72,6 +77,7 @@ for (const check of [
   'mtool_server_packet_can_be_emitted',
   'mtool_client_packet_can_be_emitted',
   'game_contract_matches_runtime_rules',
+  'old_local_room_state_resets_when_runtime_rule_changes',
   'room_join_limit_matches_contract',
   'commands_match_contract',
   'event_name_matches_contract',

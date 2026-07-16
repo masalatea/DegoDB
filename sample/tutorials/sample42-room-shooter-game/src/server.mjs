@@ -47,7 +47,7 @@ function createDefaultStore({ dataDir }) {
   });
 }
 
-function createServer({ store }) {
+function createServer({ store, tickMs = null } = {}) {
   const subscribersByRoom = new Map();
 
   function subscribe(roomSlug, response) {
@@ -79,7 +79,7 @@ function createServer({ store }) {
     }
   }
 
-  return http.createServer(async (request, response) => {
+  const server = http.createServer(async (request, response) => {
     const url = new URL(request.url ?? '/', 'http://127.0.0.1');
     try {
       if (request.method === 'GET' && url.pathname.startsWith('/r/')) {
@@ -148,6 +148,18 @@ function createServer({ store }) {
       sendJson(response, 500, { ok: false, error: error.message });
     }
   });
+
+  if (tickMs !== null) {
+    const timer = setInterval(() => {
+      for (const update of store.advanceActiveRooms()) {
+        publish(update.room_slug, update.state);
+      }
+    }, tickMs);
+    timer.unref?.();
+    server.on('close', () => clearInterval(timer));
+  }
+
+  return server;
 }
 
 function startServer({
@@ -156,7 +168,7 @@ function startServer({
   dataDir = process.env.SAMPLE42_DATA_DIR ?? path.join(os.tmpdir(), 'sample42-room-shooter-game')
 } = {}) {
   const store = createDefaultStore({ dataDir });
-  const server = createServer({ store });
+  const server = createServer({ store, tickMs: 80 });
   server.listen(port, host, () => {
     console.log(`sample42 listening on http://${host}:${port}/r/general`);
     console.log(`data dir: ${dataDir}`);

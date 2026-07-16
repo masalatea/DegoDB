@@ -17,6 +17,7 @@ let playerId = null;
 let gameState = null;
 let currentAngle = 0;
 let audioContext = null;
+let shotEffectUntil = 0;
 
 roomLabel.textContent = `Room: ${roomSlug}`;
 
@@ -125,6 +126,32 @@ function drawRaycastView(player) {
   viewContext.moveTo(view.width / 2, view.height / 2 - 12);
   viewContext.lineTo(view.width / 2, view.height / 2 + 12);
   viewContext.stroke();
+
+  drawShotEffect();
+}
+
+function drawShotEffect() {
+  if (performance.now() > shotEffectUntil) {
+    return;
+  }
+  viewContext.save();
+  viewContext.strokeStyle = '#fde047';
+  viewContext.fillStyle = 'rgba(250, 204, 21, 0.75)';
+  viewContext.lineWidth = 4;
+  viewContext.beginPath();
+  viewContext.moveTo(view.width / 2, view.height / 2 + 18);
+  viewContext.lineTo(view.width / 2, view.height / 2 - 92);
+  viewContext.stroke();
+  viewContext.beginPath();
+  viewContext.arc(view.width / 2, view.height / 2 + 26, 13, 0, Math.PI * 2);
+  viewContext.fill();
+  viewContext.restore();
+}
+
+function triggerShotEffect() {
+  shotEffectUntil = performance.now() + 140;
+  draw();
+  window.setTimeout(draw, 160);
 }
 
 function drawMap(player) {
@@ -212,6 +239,7 @@ async function postCommand(command) {
     gameState = result.state;
     if (command.type === 'shoot') {
       playShotSound();
+      triggerShotEffect();
     }
     if ((result.state.defeats?.length ?? 0) > 0) {
       playDefeatSound();
