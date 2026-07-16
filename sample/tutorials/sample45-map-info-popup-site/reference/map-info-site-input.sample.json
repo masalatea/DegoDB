@@ -1,0 +1,137 @@
+{
+  "schema_version": "map_info_popup_site_input.v1",
+  "generated_by": {
+    "tool": "mtool",
+    "artifact": "map_info_popup_site_input"
+  },
+  "sample": "sample45-map-info-popup-site",
+  "runtime_boundary": {
+    "owner": "external_site_runtime_owner",
+    "mtool_responsibility": [
+      "emit structured location data",
+      "emit popup field contract",
+      "validate that the sample site consumes the contract"
+    ],
+    "external_runtime_responsibility": [
+      "own production map provider choice",
+      "own Google Maps API key handling if Google Maps is enabled",
+      "own production hosting"
+    ],
+    "production_runtime_generated": false
+  },
+  "map_provider": {
+    "default": "local_static_canvas_map",
+    "requires_api_key": false,
+    "google_maps_optional": true,
+    "google_maps_api_key_stored_in_packet": false
+  },
+  "site": {
+    "title": "Local Map Info Popup Site",
+    "description": "A local-only marker popup information site sample.",
+    "features": [
+      "marker_click_popup",
+      "list_click_popup",
+      "site_search_hit_icon",
+      "category_filter",
+      "structured_location_data",
+      "no_api_key_required"
+    ]
+  },
+  "marker_schema": {
+    "required_fields": [
+      "id",
+      "title",
+      "category",
+      "x",
+      "y",
+      "summary",
+      "details",
+      "url"
+    ],
+    "coordinate_space": "local_normalized_percent",
+    "popup_fields": [
+      "title",
+      "category",
+      "summary",
+      "details",
+      "url"
+    ]
+  },
+  "search": {
+    "enabled": true,
+    "query_fields": [
+      "title",
+      "category",
+      "summary",
+      "details",
+      "url"
+    ],
+    "hit_icon": "🔎",
+    "show_hit_count": true,
+    "highlight_marker_hits": true,
+    "highlight_list_hits": true
+  },
+  "locations": [
+    {
+      "id": "library",
+      "title": "Central Library",
+      "category": "culture",
+      "x": 34,
+      "y": 32,
+      "summary": "A quiet public reading spot.",
+      "details": "Includes event rooms, archive shelves, and a small local-history exhibit.",
+      "url": "https://example.test/library"
+    },
+    {
+      "id": "market",
+      "title": "Morning Market",
+      "category": "food",
+      "x": 58,
+      "y": 42,
+      "summary": "A compact food market area.",
+      "details": "Good for testing dense markers, popup text, and category filtering.",
+      "url": "https://example.test/market"
+    },
+    {
+      "id": "station",
+      "title": "North Station",
+      "category": "transport",
+      "x": 73,
+      "y": 26,
+      "summary": "Main public transport access point.",
+      "details": "Represents transit-oriented points with short actionable information.",
+      "url": "https://example.test/station"
+    },
+    {
+      "id": "park",
+      "title": "Riverside Park",
+      "category": "nature",
+      "x": 43,
+      "y": 68,
+      "summary": "Open green space near the river.",
+      "details": "Useful for validating different category styling and popup layout.",
+      "url": "https://example.test/park"
+    }
+  ],
+  "validation": {
+    "required_checks": [
+      "no_api_key_required",
+      "google_maps_key_not_stored",
+      "structured_location_data",
+      "marker_click_popup",
+      "list_click_popup",
+      "site_search",
+      "site_search_hit_icon",
+      "site_search_hit_count",
+      "category_filter",
+      "popup_fields_present",
+      "local_runtime_serves_json"
+    ]
+  },
+  "forbidden_actions": [
+    "store_google_maps_api_key_in_repo",
+    "require_google_maps_api_for_local_sample",
+    "claim_production_map_provider_integration",
+    "load_remote_tiles_in_validator"
+  ]
+}
