@@ -64,6 +64,7 @@ sample/tutorials/sample41-simple-whiteboard/public/index.html
 Or serve it with any static file server.
 
 This is a sample whiteboard, not a production collaborative drawing app.
+Before cutting it out for real use, review `PRODUCTION-HARDENING.md`.
 
 ## Room sync first slice
 
@@ -82,3 +83,5 @@ It validates:
 - no per-operation TTL;
 - whole-board clear after 7 inactive days;
 - room URL registry preservation.
+
+This first slice is still a single-process loopback sample. It is not production storage or production realtime infrastructure.

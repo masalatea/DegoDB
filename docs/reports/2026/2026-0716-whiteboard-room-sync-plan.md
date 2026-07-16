@@ -65,6 +65,20 @@ Still out of scope for the first slice:
 - production persistence;
 - public deployment.
 
+## Production hardening checklist
+
+The cut-out boundary is documented in `sample/tutorials/sample41-simple-whiteboard/PRODUCTION-HARDENING.md`.
+
+It covers:
+
+- identity and room access;
+- persistence;
+- retention and cleanup;
+- realtime transport;
+- drawing operation safety;
+- abuse and moderation;
+- deployment.
+
 ## Boundary
 
 This slice should not silently become a production collaborative whiteboard.
