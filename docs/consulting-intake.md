@@ -69,7 +69,7 @@ Typical first package / 最初の典型 package:
 | MySQL / MariaDB user DB | Mainline / 主線。 |
 | SQLite | Lightweight config store and representative user DB contracts / 軽量 config store と代表 user DB contract。 |
 | PostgreSQL | Complete for the required opt-in user DB / generated-output lane. Mtool config store PostgreSQL is intentionally not required. / 必要範囲の opt-in user DB / generated-output lane は完了。Mtool config store の PostgreSQL 化は意図的に不要。 |
-| Firebird | Active feasibility candidate for a local durable DB profile; not current production support / local durable DB profile の active feasibility 候補。現行 production support ではない。 |
+| Firebird | Complete for the agreed opt-in Mtool/profile and one-way migration-path scope; broader production support is new scope / 合意済み opt-in Mtool/profile と一方向 migration-path scope では完了。より広い production support は新規 scope。 |
 | SQL Server / Oracle | Future candidate unless separate scope is decided / 別途 scope 決定があるまで将来候補。 |
 | Non-PHP generated output | Legacy reference / future candidate / 旧実装参照または将来候補。 |
 | AI context generation | Current `AI-CONTEXT-MD` generated output from canonical metadata / canonical metadata から生成する現行 `AI-CONTEXT-MD` output。 |

@@ -49,11 +49,11 @@ DB 対応は必ず layer を指定します。PostgreSQL 完了は user DB・gen
 
 | Layer | MySQL / MariaDB | SQLite | PostgreSQL | Firebird | SQL Server / Oracle |
 | --- | --- | --- | --- | --- | --- |
-| Mtool config store | `current default` | `current lightweight profile` | `not required` / 不要判断済み | `active feasibility` as local durable profile / local durable profileとしてactive feasibility | Not current support / 現行対応ではない |
-| Imported user database | `current mainline` | `verified representative lane` | `opt-in verified lane` | Future only after local profile proof / local profile proof後の将来候補 | `parked / future candidate` |
-| Generated DBAccess runtime | `current / verified` | `verified representative contracts` | `opt-in representative contracts` | Future only after connection proof / connection proof後の将来候補 | `parked / future candidate` |
+| Mtool config store | `current default` | `current lightweight profile` | `not required` / 不要判断済み | `opt-in verified local durable profile` / opt-in検証済みlocal durable profile | Not current support / 現行対応ではない |
+| Imported user database | `current mainline` | `verified representative lane` | `opt-in verified lane` | `opt-in verified representative lane` | `parked / future candidate` |
+| Generated DBAccess runtime | `current / verified` | `verified representative contracts` | `opt-in representative contracts` | `opt-in representative contracts` | `parked / future candidate` |
 | SQLite-to-MySQL promotion | `current / verified target` | `current / verified source` | Not current support / 現行対応ではない | Candidate intermediate target via SQLite-to-Firebird / SQLite-to-Firebird経由の中間target候補 | Not current support / 現行対応ではない |
-| Scenario examples | `current input examples` | `current input examples` | `current input examples` | Planned local durable example / local durable例を計画中 | Future only / 将来候補 |
+| Scenario examples | `current input examples` | `current input examples` | `current input examples` | `verified sample/config/promotion lanes` | Future only / 将来候補 |
 
 ## Tutorial Coverage / tutorial coverage
 
@@ -64,8 +64,13 @@ DB 対応は必ず layer を指定します。PostgreSQL 完了は user DB・gen
 | `sample11-17` | Source Output and bundle: HTML, external DB import, OpenAPI, custom proxy, metadata bundle, auth proxy, capstone. | Source Output と bundle: HTML、external DB import、OpenAPI、custom proxy、metadata bundle、auth proxy、capstone。 |
 | `sample18` | Instruction-driven task board demo with HTTP smoke. | instruction-driven task board demo と HTTP smoke。 |
 | `sample19-26` | JSON-first / ebook CMS lane through headless CMS capstone. | JSON-first / ebook CMS lane から headless CMS capstone まで。 |
+| `sample27-32` | App-local persistence and generated no-code runtime, sync, domain repetition, and UI testing. | App-local persistence、generated no-code runtime、sync、domain反復、UI testing。 |
 | `sample33` | SQLite-to-MySQL promotion artifact-chain tutorial. | SQLiteからMySQLへのpromotion artifact-chain tutorial。 |
 | `sample34` | SQLite-to-Firebird promotion path tutorial with contract, rehearsal, and opt-in live import smoke. | SQLiteからFirebirdへのpromotion path tutorial。contract、rehearsal、opt-in live import smoke を含む。 |
+| `sample35-37` | External app wrapper and shared-state server/client input packet handoff. | external app wrapper と shared-state server/client input packet handoff。 |
+| `sample38-41` | Shared-state Node.js reference runtime, chat, ephemeral room site, and whiteboard. | shared-state Node.js reference runtime、chat、ephemeral room site、whiteboard。 |
+| `sample42-44` | Room shooter, tank survival, and line-rendered raycast FPS demos with artifact linkage. | room shooter、tank survival、line-rendered raycast FPS demo と artifact linkage。 |
+| `sample45-47` | Key-free map info site, choice adventure, and multiplayer room RPG demos. | key-free map info site、choice adventure、multiplayer room RPG demo。 |
 
 ## Verification Commands / 検証 command
 
@@ -88,6 +93,10 @@ php mtool/scripts/validate_sample33_promotion.php
 php mtool/scripts/validate_sample34_firebird_promotion.php
 make sample34-firebird-promotion-smoke-docker
 make sample34-firebird-backup-restore-smoke-docker
+node sample/tutorials/sample35-capacitor-artifact-import/scripts/validate-sample.mjs
+node sample/tutorials/sample38-shared-state-sync-node-runtime/scripts/validate-sample.mjs
+node sample/tutorials/sample47-open-world-rpg-demo/scripts/validate-sample.mjs
+node sample/tutorials/sample47-open-world-rpg-demo/scripts/validate-mtool-artifact-linkage.mjs
 ```
 
 Full suite baseline / full suite 基準:

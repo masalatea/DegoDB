@@ -97,7 +97,7 @@ This document records the plan for treating `LanguageResource` as an optional mo
 
 ## 関連文書
 
-- [2026-0515-progress-snapshot.md](<repo-root>/docs/reports/2026/2026-0515-progress-snapshot.md)
-- [2026-0515-language-resource-file-source-of-truth-plan.md](<repo-root>/docs/reports/2026/2026-0515-language-resource-file-source-of-truth-plan.md)
-- [2026-0515-language-resource-debug-bridge-hardening.md](<repo-root>/docs/reports/2026/2026-0515-language-resource-debug-bridge-hardening.md)
-- [mtool/resources/README.md](<repo-root>/mtool/resources/README.md)
+- [2026-0515 progress snapshot](../reports/2026/2026-0515-progress-snapshot.md)
+- [2026-0515 language resource file source-of-truth plan](../reports/2026/2026-0515-language-resource-file-source-of-truth-plan.md)
+- [2026-0515 language resource debug bridge hardening](../reports/2026/2026-0515-language-resource-debug-bridge-hardening.md)
+- [Language resource file catalog](../../mtool/resources/README.md)

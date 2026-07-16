@@ -92,9 +92,9 @@ This roadmap maps old admin functionality to the new implementation. It covers p
 
 #### 2026-06-19 時点の読み替え
 
-この表の `%` と「2026-05-15 時点」の記述は、5 月時点の broad rewrite / admin migration snapshot として読む。現在の active ordering は [2026-0619-plan-inventory.md](../reports/2026/2026-0619-plan-inventory.md) を正本にし、`sample01-26` tutorial lane、Mtool-side SQLite config store、user DB dialect first stop-line の完了状況を反映して判断する。
+この表の `%` と「2026-05-15 時点」の記述は、5 月時点の broad rewrite / admin migration snapshot として読む。現在の active ordering は [Current Plans](../current-plans.md) を正本にし、`sample01-47` tutorial lane、Mtool-side SQLite/Firebird profile、user DB dialect の完了状況を反映して判断する。
 
-この roadmap 自体は、旧 admin 機能を new admin / lab route へどう対応づけるかの living map として維持する。ただし、次の実装順を決める active parent plan ではない。今後ここを更新する場合は、古い進捗率を細かく再見積もりするより、current route が daily operation の source of truth になっているか、残っている legacy fallback がどの ownership に属するかを確認する。
+この roadmap 自体は、旧 admin 機能を new admin / lab route へどう対応づけるかの historical living map として維持する。ただし、次の実装順を決める active parent plan ではない。今後ここを更新する場合は、古い進捗率を細かく再見積もりするより、current route が daily operation の source of truth になっているか、残っている legacy fallback がどの ownership に属するかを確認する。
 
 | Step | 意味 | 現在の目安 | 主な根拠 | 完了までの主な残り |
 | --- | --- | --- | --- | --- |
@@ -107,7 +107,7 @@ This roadmap maps old admin functionality to the new implementation. It covers p
 - Step 2 の `%` は self-host loop と runtime self-generation の到達度を見た概算であり、運用は `simple form direct replacement` と `complex/new form の sample gate` の 2 段で読む。
 - Step 2 の `full replacement` は historical contract の literal `100%` を意味しない。current planning では、`ApacheHostSetting*` のような明示除外、live row が無い `file/blob` contract、provenance rename のような別 migration task を除いた `bounded full replacement` を完了境界とする。
 - Step 2 の運用では、`make test` / `make mtool-self-loop-check` で new artifact を出す verification run と、`make promote-runtime-reference` で default runtime reference を進める promote candidate run を分ける。`status=stale-reference` は verification-only run でも起こりうるため、latest artifact の採用判断を別に持つ。
-- broad scope の最新読みは [2026-0515-progress-snapshot.md](<repo-root>/docs/reports/2026/2026-0515-progress-snapshot.md)、runtime 置換運用の最新読みは [2026-0520-runtime-replacement-two-stage-rollout.md](<repo-root>/docs/reports/2026/2026-0520-runtime-replacement-two-stage-rollout.md) を参照する。
+- broad scope の当時の snapshot は [2026-0515 progress snapshot](../reports/2026/2026-0515-progress-snapshot.md)、runtime 置換運用は [2026-0520 runtime replacement two-stage rollout](../reports/2026/2026-0520-runtime-replacement-two-stage-rollout.md) を参照する。現在の優先順位は [Current Plans](../current-plans.md) を使う。
 
 ### フェーズ間の考え方
 
@@ -138,7 +138,7 @@ This roadmap maps old admin functionality to the new implementation. It covers p
 - self-host / runtime 置換は重要だが、missing setting 機能が残っている段階では主系へ上げない。
 - Phase 1 の途中で self-host 側を触る場合も、目的は parity 維持、bridge debt 圧縮、または後段置換のための局所準備に限る。
 - legacy-only な情報は、Phase 1 の進行を止めてまで canonical schema へ昇格させない。必要な間は `notes` や bridge で保持してよい。
-- 2026-05-15 snapshot の broad scope 読みは [2026-0515-progress-snapshot.md](<repo-root>/docs/reports/2026/2026-0515-progress-snapshot.md) を参照する。2026-06-19 以降の active ordering は [2026-0619-plan-inventory.md](../reports/2026/2026-0619-plan-inventory.md) を参照する。
+- 2026-05-15 snapshot の broad scope 読みは [2026-0515 progress snapshot](../reports/2026/2026-0515-progress-snapshot.md) を参照する。現在の active ordering は [Current Plans](../current-plans.md) を参照する。
 
 ### Phase 2 を主系へ上げるゲート
 

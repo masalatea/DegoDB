@@ -31,23 +31,12 @@ SQLite-first application database を MySQL / MariaDB へ昇格する時は [SQL
 
 ### tutorial lane
 
-- `sample/tutorials/sample01-simple-table-runtime`
-- `sample/tutorials/sample02-dataclass-nullable-default-status`
-- `sample/tutorials/sample03-dataclass-lookup-and-helper`
-- `sample/tutorials/sample04-dataclass-parent-child-basic`
-- `sample/tutorials/sample05-dbaccess-select-basic`
-- `sample/tutorials/sample06-dbaccess-filter-sort-page`
-- `sample/tutorials/sample07-dbaccess-crud-basic`
-- `sample/tutorials/sample08-dbaccess-join-read-model`
-- `sample/tutorials/sample09-dbaccess-aggregate-report`
-- `sample/tutorials/sample10-dbaccess-mini-crud-flow`
-- `sample/tutorials/sample11-html-template-output`
-- `sample/tutorials/sample12-external-db-source-import`
-- `sample/tutorials/sample13-openapi-api-surface`
-- `sample/tutorials/sample14-custom-proxy-runtime`
-- `sample/tutorials/sample15-project-metadata-export-import`
-- `sample/tutorials/sample16-authenticated-proxy`
-- `sample/tutorials/sample17-multi-output-project`
+- `sample/tutorials/sample01-simple-table-runtime` から `sample/tutorials/sample47-open-world-rpg-demo`
+- `sample01-32`: Docker/runtime pack を中心にした database-first、Source Output、ebook、no-code 学習 lane
+- `sample33-34`: SQLite から MySQL / Firebird への promotion lane
+- `sample35-37`: external app wrapper と shared-state input packet handoff lane
+- `sample38-47`: dependency-free Node.js/static-first の shared-state runtime、chat、whiteboard、game、map、adventure、RPG reference/demo lane
+- 完全な pack 名、役割、検証 command は [Sample Tutorial Roadmap](sample-tutorial-roadmap.md) と [tutorial sample catalog](../sample/tutorials/README.md) を正本にする
 
 ### internal guard lane
 
@@ -60,6 +49,7 @@ SQLite-first application database を MySQL / MariaDB へ昇格する時は [SQL
 ### promotion lane
 
 - `sample/tutorials/sample33-sqlite-to-mysql-promotion`
+- `sample/tutorials/sample34-sqlite-to-firebird-promotion`
 - SSO app-user promotion qualification through `SsoAppUserPromotionTest`
 
 ## まず使うコマンド
