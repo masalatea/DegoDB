@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sample 46 Choice Adventure Game</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <main class="game">
+    <section class="screen">
+      <div id="frame" class="frame moon_gate" aria-label="Adventure scene image">
+        <div class="moon"></div>
+        <div class="lantern"></div>
+        <div class="silhouette"></div>
+      </div>
+      <article class="text-panel">
+        <p id="sceneKind" class="scene-kind">Opening</p>
+        <h1 id="sceneTitle">Loading...</h1>
+        <p id="sceneText"></p>
+        <div id="choices" class="choices" role="listbox" aria-label="Choices"></div>
+      </article>
+    </section>
+    <footer class="help">
+      <span>↑/↓ select</span>
+      <span>Enter confirm</span>
+      <span>Mouse/touch supported</span>
+    </footer>
+  </main>
+  <script type="module" src="/game.js"></script>
+</body>
+</html>
