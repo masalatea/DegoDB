@@ -24,7 +24,10 @@ When someone asks for "the plan list", answer from this section first. / 「計�
 - game audio validator first slice は完了済み。
 - AI-facing plugin examples を使った簡単な static game sample は完了済み。
 - 対戦式の大きな迷路 race sample は Node ありの room 対戦に更新済み。
-- 次は、sample49 browser smoke、shared-state sync AI plugin、または code-facing plugin interface を選ぶ。
+- 高さ情報つき 45度視点 RPG map sample は別サンプルとして完了済み。
+- vendored Three.js による 3D height-map view sample は完了済み。
+- Node API から Mtool-style map packet を読む Three.js height-map runtime sample は完了済み。
+- 次は、sample52 browser smoke / API contract check、height collision/pathfinding policy、shared-state sync AI plugin、または code-facing plugin interface を選ぶ。
 
 Current main status:
 
@@ -37,7 +40,10 @@ Current main status:
 - The game-audio validator first slice is complete.
 - The simple static game sample using AI-facing plugin examples is complete.
 - The competitive large scrolling maze race sample has been updated to Node-backed room multiplayer.
-- Next is choosing a sample49 browser smoke, shared-state sync AI plugin, or separate code-facing plugin interface.
+- The separate 45-degree height-map RPG view sample is complete.
+- The vendored Three.js 3D height-map view sample is complete.
+- The Three.js height-map runtime sample that reads a Mtool-style map packet from a Node API is complete.
+- Next is choosing a sample52 browser smoke / API contract check, height collision/pathfinding policy, shared-state sync AI plugin, or separate code-facing plugin interface.
 
 | Order | Work unit / 作業の塊 | Commit unit / コミット単位 | Status | Next decision / 次の判断 |
 | --- | --- | --- | --- | --- |
@@ -48,7 +54,10 @@ Current main status:
 | 973 | Game audio AI plugin validator first slice / game audio AI plugin validator first slice | Add focused validation for audio plugin manifest/task/candidate, cue ID uniqueness, trigger cue references, and handoff non-goals | `DONE` | `validate_ai_game_audio_packet.php` and integration coverage added |
 | 974 | AI plugin lantern game static sample / AI plugin lantern game static sample | Add a small static browser game that uses the game-content and game-audio plugin examples as source linkage | `DONE` | `sample48-ai-plugin-lantern-game` added with no runtime/package/audio asset generation |
 | 975 | Competitive maze race Node room sample / 対戦式 maze race Node room sample | Add a four-corner-start scrolling maze race where Space hold drives forward, released state rotates the facing arrow at 90 degrees/sec, and same-room human players can race with AI fillers | `DONE` | `sample49-ai-plugin-maze-race` uses a local Node room server, SSE updates, and no production multiplayer claim |
-| 976 | Post-sample49 next-scope selection / sample49 後 next-scope選択 | Choose the next lane after the maze race sample | `ACTIVE_NEXT` | Select sample49 browser smoke, shared-state sync AI plugin, or code-facing plugin interface |
+| 976 | Height-map RPG 45-degree view sample / height-map RPG 45度視点 sample | Add a separate static RPG map sample with deterministic smooth random height values and 45-degree projected view | `DONE` | `sample50-height-map-rpg-view` added without changing sample47 runtime |
+| 977 | Height-map Three.js 3D view sample / height-map Three.js 3D view sample | Add a separate vendored-Three.js terrain mesh sample with deterministic height values, vertex colors, lights, player marker, and 45-degree camera | `DONE` | `sample51-height-map-threejs-view` added with vendored `three.module.js` and no npm/CDN runtime dependency |
+| 978 | API-fed height-map RPG runtime sample / API-fed height-map RPG runtime sample | Add a Node-backed sample where an internal Mtool-style map packet provider is exposed through `/api/map` and a Three.js runtime fetches that packet to render terrain | `DONE` | `sample52-api-height-map-rpg-runtime` added with no production collision/pathfinding/auth/deployment claim |
+| 979 | Post-sample52 next-scope selection / sample52 後 next-scope選択 | Choose the next lane after the API-fed Three.js height-map runtime sample | `ACTIVE_NEXT` | Select sample52 browser smoke/API contract check, height collision/pathfinding policy, shared-state sync AI plugin, or code-facing plugin interface |
 
 ### Candidate Next Lanes / 次候補
 

@@ -1,0 +1,93 @@
+{
+  "schema_version": "height_map_threejs_view_input.v1",
+  "generated_by": {
+    "tool": "mtool",
+    "artifact": "height_map_threejs_view_input"
+  },
+  "sample": "sample51-height-map-threejs-view",
+  "source_inspiration": {
+    "canvas_height_map_sample": "sample/tutorials/sample50-height-map-rpg-view/reference/height-map-rpg-input.sample.json",
+    "rpg_map_sample": "sample/tutorials/sample47-open-world-rpg-demo/reference/open-world-rpg-input.sample.json"
+  },
+  "vendored_dependencies": [
+    {
+      "name": "three",
+      "version": "0.185.1",
+      "path": "vendor/three/three.module.js",
+      "support_paths": [
+        "vendor/three/three.core.js"
+      ],
+      "license_path": "vendor/three/LICENSE",
+      "license": "MIT",
+      "source": "https://www.npmjs.com/package/three"
+    }
+  ],
+  "runtime_boundary": {
+    "owner": "static_browser_visualization_owner",
+    "mtool_responsibility": [
+      "provide structured 3D height-map sample rule packet",
+      "validate static rendering boundary",
+      "document vendored dependency"
+    ],
+    "external_runtime_responsibility": [
+      "own production terrain engine",
+      "own collision and pathfinding",
+      "own production rendering optimization",
+      "own asset pipeline"
+    ],
+    "nodejs_required": false,
+    "static_server_required_for_modules": true,
+    "package_dependencies_required": false,
+    "external_assets_required": false,
+    "production_runtime_generated": false
+  },
+  "height_map": {
+    "columns": 96,
+    "rows": 96,
+    "world_size": 44,
+    "height_scale": 7.5,
+    "seed": 51051,
+    "noise": {
+      "kind": "smooth_value_noise",
+      "octaves": 5,
+      "persistence": 0.52,
+      "lacunarity": 2,
+      "normalized_range": [
+        0,
+        1
+      ]
+    }
+  },
+  "view": {
+    "renderer": "threejs_webgl",
+    "projection": "perspective_45_degree_camera",
+    "camera_orbit": true,
+    "player_marker": true,
+    "height_shading": true,
+    "lights": [
+      "ambient",
+      "directional"
+    ]
+  },
+  "validation": {
+    "required_checks": [
+      "static_files_exist",
+      "vendored_three_module_exists",
+      "no_package_json",
+      "no_node_modules",
+      "height_values_normalized",
+      "terrain_mesh_generated",
+      "camera_45_degree_initial_view",
+      "orbit_controls_without_addon_dependency",
+      "sample50_reference_declared"
+    ]
+  },
+  "forbidden_actions": [
+    "install_dependencies",
+    "load_cdn_runtime_dependency",
+    "generate_game_engine_project",
+    "claim_production_terrain_engine",
+    "claim_collision_or_pathfinding_support",
+    "publish_or_deploy"
+  ]
+}

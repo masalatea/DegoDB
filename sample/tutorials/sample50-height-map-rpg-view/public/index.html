@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sample 50 Height Map RPG View</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="shell">
+    <header class="hud">
+      <div>
+        <p class="eyebrow">Sample 50</p>
+        <h1>Height Map RPG View</h1>
+      </div>
+      <div class="stats" aria-live="polite">
+        <span id="seedText">Seed 50050</span>
+        <span id="heightText">45-degree view</span>
+      </div>
+    </header>
+
+    <canvas id="terrain" width="960" height="640" aria-label="45 degree height map RPG terrain"></canvas>
+
+    <footer class="controls">
+      <span>Arrow keys / WASD pan</span>
+      <span>R regenerate seed</span>
+      <span>Height is deterministic smooth noise</span>
+    </footer>
+  </main>
+  <script src="game.js"></script>
+</body>
+</html>

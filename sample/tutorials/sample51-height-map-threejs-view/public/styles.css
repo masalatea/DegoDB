@@ -1,0 +1,96 @@
+:root {
+  color-scheme: dark;
+  font-family: "Hiragino Sans", "Yu Gothic", ui-sans-serif, system-ui, sans-serif;
+  background: #07111f;
+  color: #f8fafc;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  overflow: hidden;
+  background: #07111f;
+}
+
+.scene-shell {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  min-height: 520px;
+}
+
+#scene {
+  position: absolute;
+  inset: 0;
+}
+
+#scene canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.hud,
+.controls {
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  pointer-events: none;
+}
+
+.hud {
+  top: 14px;
+}
+
+.controls {
+  bottom: 14px;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.eyebrow {
+  margin: 0 0 4px;
+  color: #86efac;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+}
+
+h1 {
+  margin: 0;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.55);
+  font-size: clamp(1.45rem, 4vw, 2.35rem);
+  letter-spacing: 0;
+}
+
+.stats,
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.stats span,
+.controls span {
+  border: 1px solid rgba(148, 163, 184, 0.36);
+  border-radius: 8px;
+  background: rgba(15, 23, 42, 0.76);
+  color: #e2e8f0;
+  padding: 8px 10px;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 720px) {
+  .hud {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}

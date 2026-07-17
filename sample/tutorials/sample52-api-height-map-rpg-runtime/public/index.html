@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sample 52 API Height Map RPG Runtime</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <main class="scene-shell">
+    <div id="scene" aria-label="API-fed Three.js height map scene"></div>
+    <header class="hud">
+      <div>
+        <p class="eyebrow">Sample 52</p>
+        <h1>API Height Map Runtime</h1>
+      </div>
+      <div class="stats">
+        <span id="apiText">Loading /api/map</span>
+        <span id="seedText">Seed --</span>
+        <span id="heightText">Height --</span>
+        <span id="positionText">Pos 0.0, 0.0</span>
+      </div>
+    </header>
+    <footer class="controls">
+      <span>W/S move</span>
+      <span>A/D turn</span>
+      <span>Drag orbit</span>
+      <span>Wheel zoom</span>
+      <span>R refetch seed</span>
+    </footer>
+  </main>
+  <script type="module" src="/game.js?v=api-map-1"></script>
+</body>
+</html>

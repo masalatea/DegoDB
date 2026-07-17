@@ -1,0 +1,50 @@
+const DEFAULT_PACKET = {
+  schema_version: 'mtool_height_map_packet.v1',
+  generated_by: {
+    tool: 'mtool',
+    interface: 'ai_facing_map_api',
+    artifact: 'height_map_runtime_packet'
+  },
+  map: {
+    id: 'sample52-smooth-highland',
+    name: 'Smooth Highland API Map',
+    columns: 96,
+    rows: 96,
+    world_size: 44,
+    height_scale: 7.5,
+    seed: 52052,
+    terrain: {
+      kind: 'smooth_value_noise',
+      octaves: 5,
+      persistence: 0.52,
+      lacunarity: 2,
+      normalized_range: [0, 1]
+    },
+    materials: [
+      { id: 'waterline', max_height: 0.28, color: '#0f766e' },
+      { id: 'grass', max_height: 0.42, color: '#15803d' },
+      { id: 'highland', max_height: 0.62, color: '#4d7c0f' },
+      { id: 'rock', max_height: 0.78, color: '#78716c' },
+      { id: 'snow', max_height: 1.0, color: '#e2e8f0' }
+    ],
+    player_start: { x: 0, z: 0 },
+    runtime_hints: {
+      renderer: 'threejs_webgl',
+      camera: 'orbit_follow_45_degree',
+      player_height_follow: true
+    }
+  }
+};
+
+function clone(value) {
+  return JSON.parse(JSON.stringify(value));
+}
+
+function createMapPacket(overrides = {}) {
+  const packet = clone(DEFAULT_PACKET);
+  if (Number.isInteger(overrides.seed)) packet.map.seed = overrides.seed;
+  if (typeof overrides.mapId === 'string' && overrides.mapId !== '') packet.map.id = overrides.mapId;
+  return packet;
+}
+
+export { createMapPacket };
