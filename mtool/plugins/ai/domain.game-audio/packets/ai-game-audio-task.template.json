@@ -1,0 +1,45 @@
+{
+  "schema_version": "mtool_ai_plugin_task.v1",
+  "plugin_id": "domain.game-audio",
+  "task_kind": "game_audio_candidate",
+  "task_id": "<task-id>",
+  "authority": {
+    "task_json_wins_over_task_md": true,
+    "source_of_truth": "input/source.json",
+    "candidate_contract": "input/output-shape.json",
+    "plugin_manifest": "input/plugin.json",
+    "examples_are_advisory": true
+  },
+  "allowed_reads": [
+    "task.json",
+    "TASK.md",
+    "input/plugin.json",
+    "input/source.json",
+    "input/output-shape.json",
+    "input/examples.json",
+    "input/handoff-context.json"
+  ],
+  "allowed_writes": [
+    "output/candidate.json"
+  ],
+  "candidate_schema_version": "game_audio_ai_candidate.v1",
+  "validation": {
+    "implemented": true,
+    "command": "php mtool/scripts/validate_ai_game_audio_packet.php --plugin=input/plugin.json --task=task.json --candidate=output/candidate.json"
+  },
+  "confirmation_required": true,
+  "confirmation_prompt": "I will use the game-audio AI plugin only as instructions and schemas, write only output/candidate.json, and perform no audio generation, asset licensing decision, runtime playback implementation, dependency install, project generation, build, publish, or deployment. Proceed with this specific task?",
+  "prohibited_actions": [
+    "audio asset generation",
+    "asset licensing decisions",
+    "runtime playback implementation",
+    "mixer implementation",
+    "dependency installation",
+    "Unity/Godot/native project generation",
+    "Mtool metadata mutation",
+    "database mutation",
+    "build",
+    "publish",
+    "deployment"
+  ]
+}

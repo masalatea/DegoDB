@@ -1,0 +1,18 @@
+{
+  "schema_version": "game_content_source_brief.v1",
+  "title": "Lantern Path",
+  "genre": "small exploration RPG",
+  "brief": "A player explores a small forest shrine, meets a keeper, and unlocks a gate by finding a lantern charm.",
+  "required_content": {
+    "scenario_count": 1,
+    "map_count": 1,
+    "minimum_scene_count": 3,
+    "minimum_character_count": 2
+  },
+  "constraints": [
+    "Keep content small enough for a tutorial sample.",
+    "Use structured IDs.",
+    "Do not require a production game server.",
+    "Do not include music or sound effects in this first slice."
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "schema_version": "mtool-ai-plugin-v1",
+  "id": "domain.game-content",
+  "name": "Game Content AI Plugin",
+  "kind": "ai_facing",
+  "description": "AI-facing package for scenario, map, scene, and character-status content modeling. It guides Codex / Claude style agents but does not execute runtime code or generate a game engine project.",
+  "interfaces": [
+    "task_packet",
+    "schema",
+    "example",
+    "validator_contract",
+    "handoff"
+  ],
+  "runtime_execution": false,
+  "generator_hooks": false,
+  "default_task_packet": "packets/ai-game-content-task.template.json",
+  "human_task": "packets/AI-GAME-CONTENT-TASK.md",
+  "schemas": {
+    "candidate": "schemas/game-content-candidate.schema.json"
+  },
+  "examples": [
+    {
+      "id": "minimal-rpg",
+      "source": "examples/minimal-rpg/source.json",
+      "candidate": "examples/minimal-rpg/candidate.json"
+    }
+  ],
+  "handoff": {
+    "runtime_owner_guide": "handoff/GAME-RUNTIME-HANDOFF.md"
+  },
+  "validation": {
+    "required": true,
+    "implemented": true,
+    "command": "php mtool/scripts/validate_ai_plugin_packet.php --plugin=mtool/plugins/ai/domain.game-content/plugin.json --task=<task.json> --candidate=<candidate.json>"
+  },
+  "first_slice_scope": [
+    "scenario management",
+    "map and scene management",
+    "character status management",
+    "external runtime handoff boundary"
+  ],
+  "later_scope": [
+    "music cue management",
+    "sound effect management",
+    "shared game-state sync",
+    "engine-specific Unity/Godot/web-canvas handoff extensions"
+  ],
+  "non_goals": [
+    "game engine project generation",
+    "dependency installation",
+    "runtime execution",
+    "asset licensing decisions",
+    "publish or deployment",
+    "anti-cheat implementation",
+    "matchmaking implementation"
+  ]
+}

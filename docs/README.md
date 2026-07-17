@@ -19,6 +19,7 @@ top-level は外部ユーザ向け導線を優先し、内部向け文書は [In
    - [Adoption Guide / 採用ガイド](adoption-guide.md)
    - [JSON To DB Entrance / JSON から DB 設計へ入る入口](json-to-db-entrance.md) optional pre-design entrance
    - [AI Task-Packet Workflow / AI task packet ワークフロー](ai-task-packet-workflow.md)
+   - [AI-Facing Plugin Interface / AI向け plugin interface](ai-facing-plugin-interface.md)
    - [AI-Assisted External App Handoff Checklist / AI支援 external app handoff checklist](ai-assisted-external-app-handoff-checklist.md)
    - [AI Schema Proposal Handoff Guide / AI schema proposal handoff guide](ai-schema-proposal-handoff-guide.md)
    - [AI Workspace Onboarding Command Guide / AI workspace onboarding command guide](ai-workspace-onboarding-command-guide.md)
@@ -133,6 +134,8 @@ detail doc だけを読んで mainline を再構成するのは current reading 
   - 初期構想に含まれる optional pre-design entrance。JSON file / JSON API cache / JSON config から AI-readable な DB design draft を作り、DB-first mainline へ入る。runtime / generator 機能ではない
 - [AI Task-Packet Workflow / AI task packet ワークフロー](ai-task-packet-workflow.md)
   - Codex / Claude が task packet を読み、具体的確認後に candidate を作り、共通 CLI で Mtool-derived review artifact まで検証する恒久手順。Ollama は明示 optional fallback
+- [AI-Facing Plugin Interface / AI向け plugin interface](ai-facing-plugin-interface.md)
+  - AI-facing plugin の置き場、manifest、task packet authority、confirmation boundary、game domain first candidate を定義する恒久入口。code-facing plugin hook は別 scope として扱う
 - [AI Schema Proposal Handoff Guide / AI schema proposal handoff guide](ai-schema-proposal-handoff-guide.md)
   - Codex / Claude / coding agent が task packet、scan、fallback candidate、formal candidate、review artifact の権限差とcopy/adapt境界を迷わず扱うための作業 guide
 - [AI Workspace Onboarding Command Guide / AI workspace onboarding command guide](ai-workspace-onboarding-command-guide.md)

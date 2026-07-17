@@ -1,0 +1,114 @@
+{
+  "schema_version": "ai_plugin_lantern_game_input.v1",
+  "generated_by": {
+    "tool": "mtool",
+    "artifact": "ai_plugin_lantern_game_input"
+  },
+  "sample": "sample48-ai-plugin-lantern-game",
+  "plugin_sources": {
+    "game_content_candidate": "mtool/plugins/ai/domain.game-content/examples/minimal-rpg/candidate.json",
+    "game_audio_candidate": "mtool/plugins/ai/domain.game-audio/examples/minimal-rpg-audio/candidate.json"
+  },
+  "runtime_boundary": {
+    "owner": "static_browser_sample_owner",
+    "mtool_responsibility": [
+      "provide AI-facing plugin metadata",
+      "provide structured game and audio candidate examples",
+      "validate sample linkage and static runtime boundary"
+    ],
+    "external_runtime_responsibility": [
+      "own production game loop",
+      "own production rendering",
+      "own production audio asset selection",
+      "own production packaging"
+    ],
+    "nodejs_required": false,
+    "package_dependencies_required": false,
+    "external_assets_required": false,
+    "production_runtime_generated": false
+  },
+  "game": {
+    "title": "Lantern Path",
+    "goal": "collect_all_charms_and_reach_gate",
+    "width": 800,
+    "height": 520,
+    "required_charms": 3,
+    "player": {
+      "x": 92,
+      "y": 392,
+      "radius": 16,
+      "speed": 3.2
+    },
+    "gate": {
+      "x": 704,
+      "y": 118,
+      "radius": 34
+    },
+    "charms": [
+      {
+        "id": "charm_entry",
+        "x": 210,
+        "y": 342
+      },
+      {
+        "id": "charm_clearing",
+        "x": 438,
+        "y": 242
+      },
+      {
+        "id": "charm_gate",
+        "x": 630,
+        "y": 360
+      }
+    ],
+    "hazards": [
+      {
+        "id": "shadow_one",
+        "x": 310,
+        "y": 160,
+        "radius": 24,
+        "dx": 1.35,
+        "dy": 0.95
+      },
+      {
+        "id": "shadow_two",
+        "x": 570,
+        "y": 290,
+        "radius": 28,
+        "dx": -1.1,
+        "dy": 1.2
+      }
+    ]
+  },
+  "audio_metadata": {
+    "music_cues": [
+      "music_forest_path",
+      "music_gate_light"
+    ],
+    "sfx_cues": [
+      "sfx_charm_found",
+      "sfx_gate_open"
+    ],
+    "audio_files_generated": false,
+    "asset_licensing_decided": false
+  },
+  "validation": {
+    "required_checks": [
+      "static_files_exist",
+      "no_package_json",
+      "no_node_modules",
+      "plugin_source_refs_declared",
+      "runtime_boundary_static_only",
+      "all_charm_ids_unique",
+      "audio_metadata_only"
+    ]
+  },
+  "forbidden_actions": [
+    "install_dependencies",
+    "generate_audio_assets",
+    "decide_asset_licensing",
+    "generate_game_engine_project",
+    "claim_production_runtime_generation",
+    "publish_or_deploy"
+  ]
+}

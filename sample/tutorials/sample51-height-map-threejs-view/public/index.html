@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sample 51 Height Map Three.js View</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="scene-shell">
+    <div id="scene" aria-label="Three.js 3D height map scene"></div>
+    <header class="hud">
+      <div>
+        <p class="eyebrow">Sample 51</p>
+        <h1>Height Map 3D View</h1>
+      </div>
+      <div class="stats">
+        <span id="seedText">Seed 51051</span>
+        <span id="heightText">Three.js vendored</span>
+        <span id="positionText">Pos 0.0, 0.0</span>
+      </div>
+    </header>
+    <footer class="controls">
+      <span>WASD / Arrows move</span>
+      <span>Drag orbit</span>
+      <span>Wheel zoom</span>
+      <span>R regenerate</span>
+    </footer>
+  </main>
+  <script type="module" src="game.js?v=movement-1"></script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+{
+  "schema_version": "height_map_rpg_view_input.v1",
+  "generated_by": {
+    "tool": "mtool",
+    "artifact": "height_map_rpg_view_input"
+  },
+  "sample": "sample50-height-map-rpg-view",
+  "source_inspiration": {
+    "rpg_map_sample": "sample/tutorials/sample47-open-world-rpg-demo/reference/open-world-rpg-input.sample.json",
+    "ai_plugin_content_root": "mtool/plugins/ai/domain.game-content/plugin.json"
+  },
+  "runtime_boundary": {
+    "owner": "static_browser_sample_owner",
+    "mtool_responsibility": [
+      "provide structured height-map sample rule packet",
+      "validate static rendering boundary",
+      "document relationship to action RPG map samples"
+    ],
+    "external_runtime_responsibility": [
+      "own production terrain engine",
+      "own collision and pathfinding",
+      "own streaming or persistence",
+      "own production rendering optimization"
+    ],
+    "nodejs_required": false,
+    "package_dependencies_required": false,
+    "external_assets_required": false,
+    "production_runtime_generated": false
+  },
+  "height_map": {
+    "columns": 48,
+    "rows": 48,
+    "tile_width": 42,
+    "tile_height": 24,
+    "height_scale": 46,
+    "seed": 50050,
+    "noise": {
+      "kind": "smooth_value_noise",
+      "octaves": 5,
+      "persistence": 0.52,
+      "lacunarity": 2,
+      "normalized_range": [
+        0,
+        1
+      ]
+    }
+  },
+  "view": {
+    "projection": "isometric_45_degree",
+    "camera_scroll": true,
+    "player_marker": true,
+    "height_shading": true
+  },
+  "validation": {
+    "required_checks": [
+      "static_files_exist",
+      "no_package_json",
+      "no_node_modules",
+      "height_values_normalized",
+      "smooth_random_height_generation",
+      "projection_45_degree",
+      "camera_pan_supported",
+      "sample47_reference_declared"
+    ]
+  },
+  "forbidden_actions": [
+    "install_dependencies",
+    "generate_game_engine_project",
+    "claim_production_terrain_engine",
+    "claim_collision_or_pathfinding_support",
+    "claim_world_streaming_support",
+    "publish_or_deploy"
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "schema_version": "mtool-ai-plugin-v1",
+  "id": "domain.game-audio",
+  "name": "Game Audio AI Plugin",
+  "kind": "ai_facing",
+  "description": "AI-facing package for game music and sound-effect cue planning. It guides Codex / Claude style agents but does not generate audio assets, execute playback code, or choose final licensing.",
+  "interfaces": [
+    "task_packet",
+    "schema",
+    "example",
+    "validator_contract",
+    "handoff"
+  ],
+  "runtime_execution": false,
+  "generator_hooks": false,
+  "default_task_packet": "packets/ai-game-audio-task.template.json",
+  "human_task": "packets/AI-GAME-AUDIO-TASK.md",
+  "schemas": {
+    "candidate": "schemas/game-audio-candidate.schema.json"
+  },
+  "examples": [
+    {
+      "id": "minimal-rpg-audio",
+      "source": "examples/minimal-rpg-audio/source.json",
+      "candidate": "examples/minimal-rpg-audio/candidate.json"
+    }
+  ],
+  "handoff": {
+    "runtime_owner_guide": "handoff/GAME-AUDIO-RUNTIME-HANDOFF.md"
+  },
+  "validation": {
+    "required": true,
+    "implemented": true,
+    "command": "php mtool/scripts/validate_ai_game_audio_packet.php --plugin=mtool/plugins/ai/domain.game-audio/plugin.json --task=<task.json> --candidate=<candidate.json>"
+  },
+  "first_slice_scope": [
+    "music cue metadata",
+    "sound effect cue metadata",
+    "scene and event trigger mapping",
+    "external audio/runtime handoff boundary"
+  ],
+  "later_scope": [
+    "implemented validator",
+    "shared-state audio event sync",
+    "engine-specific audio middleware handoff",
+    "asset catalog integration"
+  ],
+  "non_goals": [
+    "audio asset generation",
+    "asset licensing decisions",
+    "runtime playback implementation",
+    "mixer implementation",
+    "dependency installation",
+    "game engine project generation",
+    "publish or deployment"
+  ]
+}

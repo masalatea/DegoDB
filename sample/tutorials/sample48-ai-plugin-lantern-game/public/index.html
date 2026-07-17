@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sample 48 AI Plugin Lantern Game</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="shell">
+    <header class="hud">
+      <div>
+        <p class="eyebrow">Sample 48</p>
+        <h1>Lantern Path</h1>
+      </div>
+      <div class="stats" aria-live="polite">
+        <span id="charmCount">Charms 0/3</span>
+        <span id="gameState">Find the lantern charms</span>
+      </div>
+    </header>
+
+    <canvas id="gameCanvas" width="800" height="520" aria-label="Lantern Path game canvas"></canvas>
+
+    <footer class="controls">
+      <span>Arrow keys / WASD move</span>
+      <span>Collect 3 charms</span>
+      <span>Reach the gate</span>
+      <button id="restartButton" type="button">Restart</button>
+    </footer>
+  </main>
+  <script src="game.js"></script>
+</body>
+</html>
