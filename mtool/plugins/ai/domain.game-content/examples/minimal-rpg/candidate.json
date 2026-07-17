@@ -1,0 +1,143 @@
+{
+  "schema_version": "game_content_ai_candidate.v1",
+  "plugin_id": "domain.game-content",
+  "candidate_id": "minimal-rpg-candidate",
+  "game": {
+    "title": "Lantern Path",
+    "genre": "small exploration RPG",
+    "opening_scene_id": "forest_entry"
+  },
+  "scenarios": [
+    {
+      "id": "lantern_gate",
+      "title": "The Lantern Gate",
+      "summary": "The player searches the forest shrine for a lantern charm that opens the sealed gate.",
+      "entry_scene_id": "forest_entry"
+    }
+  ],
+  "maps": [
+    {
+      "id": "forest_shrine",
+      "name": "Forest Shrine",
+      "width": 640,
+      "height": 480,
+      "areas": [
+        {
+          "id": "entry_path",
+          "label": "Entry Path",
+          "scene_id": "forest_entry"
+        },
+        {
+          "id": "keeper_clearing",
+          "label": "Keeper Clearing",
+          "scene_id": "keeper_meeting"
+        },
+        {
+          "id": "sealed_gate",
+          "label": "Sealed Gate",
+          "scene_id": "gate_opening"
+        }
+      ]
+    }
+  ],
+  "scenes": [
+    {
+      "id": "forest_entry",
+      "title": "Forest Entry",
+      "map_id": "forest_shrine",
+      "summary": "The player arrives at a quiet path marked by dim lantern stones.",
+      "transitions": [
+        {
+          "label": "Follow the lantern stones",
+          "target_scene_id": "keeper_meeting"
+        }
+      ]
+    },
+    {
+      "id": "keeper_meeting",
+      "title": "Keeper Meeting",
+      "map_id": "forest_shrine",
+      "summary": "The shrine keeper asks the player to recover the missing lantern charm.",
+      "transitions": [
+        {
+          "label": "Accept the keeper's request",
+          "target_scene_id": "gate_opening",
+          "condition": "lantern_charm_found"
+        },
+        {
+          "label": "Return to the path",
+          "target_scene_id": "forest_entry"
+        }
+      ]
+    },
+    {
+      "id": "gate_opening",
+      "title": "Gate Opening",
+      "map_id": "forest_shrine",
+      "summary": "The lantern charm lights the sealed gate and opens the next route.",
+      "transitions": [
+        {
+          "label": "End tutorial",
+          "target_scene_id": "forest_entry"
+        }
+      ]
+    }
+  ],
+  "characters": [
+    {
+      "id": "player",
+      "name": "Player",
+      "role": "player",
+      "base_status": {
+        "hp": 100,
+        "attack": 12,
+        "defense": 8,
+        "speed": 10
+      }
+    },
+    {
+      "id": "shrine_keeper",
+      "name": "Shrine Keeper",
+      "role": "quest_npc",
+      "base_status": {
+        "hp": 80,
+        "attack": 0,
+        "defense": 10,
+        "speed": 4
+      }
+    }
+  ],
+  "runtime_handoff": {
+    "owner": "external_game_runtime_owner",
+    "mtool_owned": [
+      "content candidate structure",
+      "schema and review boundary",
+      "handoff notes"
+    ],
+    "external_runtime_owned": [
+      "game loop",
+      "rendering",
+      "input handling",
+      "save data",
+      "production packaging"
+    ],
+    "forbidden_without_explicit_artifact": [
+      "engine project generation",
+      "dependency installation",
+      "runtime execution",
+      "publish or deployment"
+    ]
+  },
+  "validation_notes": [
+    "All scene transitions point to declared scene IDs.",
+    "All map areas point to declared scene IDs.",
+    "Music, sound effects, and shared-state sync are intentionally absent from the first slice."
+  ],
+  "non_goals": [
+    "production game server generation",
+    "matchmaking",
+    "anti-cheat",
+    "asset licensing",
+    "music and sound effect management"
+  ]
+}

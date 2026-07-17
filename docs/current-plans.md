@@ -18,18 +18,37 @@ When someone asks for "the plan list", answer from this section first. / 「計�
 - Firebird、Mtool no-code 単体、mobile / external no-code wrapper handoff、shared-state sync packet scope は完了済み。
 - RSS 後の bundle / manifest / validation checklist、external consumer handoff readiness、AI-assisted external app handoff checklist は完了済み。
 - 全体整理 pass 1〜5 の初回周回と、`sample38`〜`sample47` の first slice は完了済み。
-- 次は、既存 sample の production hardening / PR checkpoint、または新しい domain sample のどれを主計画へ昇格するか選ぶ。
+- AI-facing plugin interface と game domain plugin first slice は完了済み。
+- game domain AI plugin validator first slice は完了済み。
+- music / SFX の AI-facing plugin slice は完了済み。
+- game audio validator first slice は完了済み。
+- AI-facing plugin examples を使った簡単な static game sample は完了済み。
+- 対戦式の大きな迷路 race sample は Node ありの room 対戦に更新済み。
+- 次は、sample49 browser smoke、shared-state sync AI plugin、または code-facing plugin interface を選ぶ。
 
 Current main status:
 
 - Firebird, standalone Mtool no-code, mobile/external no-code wrapper handoff, and shared-state sync packet scope are complete.
 - The post-RSS bundle / manifest / validation checklist, external consumer handoff readiness, and AI-assisted external app handoff checklist are complete.
 - The first cleanup sequence, passes 1 through 5, and the first slices of `sample38` through `sample47` are complete.
-- Next is choosing whether to promote production hardening, a PR checkpoint, or a new domain sample into the main plan.
+- The AI-facing plugin interface and game-domain plugin first slice are complete.
+- The game-domain AI plugin validator first slice is complete.
+- The music/SFX AI-facing plugin slice is complete.
+- The game-audio validator first slice is complete.
+- The simple static game sample using AI-facing plugin examples is complete.
+- The competitive large scrolling maze race sample has been updated to Node-backed room multiplayer.
+- Next is choosing a sample49 browser smoke, shared-state sync AI plugin, or separate code-facing plugin interface.
 
 | Order | Work unit / 作業の塊 | Commit unit / コミット単位 | Status | Next decision / 次の判断 |
 | --- | --- | --- | --- | --- |
-| 969 | Post-sample47 next-scope selection / sample47 後の次scope選択 | Choose one coherent next work unit after the completed sample38-47 sequence | `ACTIVE_NEXT` | Select production hardening, a PR checkpoint, or a newly scoped domain sample; do not treat the completed sample sequence as unfinished work |
+| 969 | Post-sample47 next-scope selection / sample47 後の次scope選択 | Choose one coherent next work unit after the completed sample38-47 sequence | `DONE` | Selected AI-facing plugin interface first slice |
+| 970 | AI-facing plugin interface and game domain package first slice / AI向け plugin interface・game domain package first slice | Define the AI-facing plugin root, manifest, task-packet authority, confirmation boundary, and `domain.game-content` package without code-facing hooks | `DONE` | Root, manifest, candidate schema, task template, minimal example, validator contract, and runtime handoff added |
+| 971 | Game domain AI plugin validator first slice / game domain AI plugin validator first slice | Add a focused validator for the AI plugin manifest/task/candidate package and ID-reference checks | `DONE` | `validate_ai_plugin_packet.php` and integration coverage added |
+| 972 | Game audio AI plugin package first slice / game audio AI plugin package first slice | Add a music/SFX AI-facing plugin package with cue metadata, trigger mapping, example, validator contract, and runtime handoff only | `DONE` | `domain.game-audio` package added; no audio generation, playback runtime, licensing decision, or engine project generation |
+| 973 | Game audio AI plugin validator first slice / game audio AI plugin validator first slice | Add focused validation for audio plugin manifest/task/candidate, cue ID uniqueness, trigger cue references, and handoff non-goals | `DONE` | `validate_ai_game_audio_packet.php` and integration coverage added |
+| 974 | AI plugin lantern game static sample / AI plugin lantern game static sample | Add a small static browser game that uses the game-content and game-audio plugin examples as source linkage | `DONE` | `sample48-ai-plugin-lantern-game` added with no runtime/package/audio asset generation |
+| 975 | Competitive maze race Node room sample / 対戦式 maze race Node room sample | Add a four-corner-start scrolling maze race where Space hold drives forward, released state rotates the facing arrow at 90 degrees/sec, and same-room human players can race with AI fillers | `DONE` | `sample49-ai-plugin-maze-race` uses a local Node room server, SSE updates, and no production multiplayer claim |
+| 976 | Post-sample49 next-scope selection / sample49 後 next-scope選択 | Choose the next lane after the maze race sample | `ACTIVE_NEXT` | Select sample49 browser smoke, shared-state sync AI plugin, or code-facing plugin interface |
 
 ### Candidate Next Lanes / 次候補
 
@@ -37,7 +56,8 @@ These are candidates only. Promote one into Main Plan when the user chooses it. 
 
 | Candidate / 候補 | Why it exists / 理由 | Current boundary / 現在の境界 |
 | --- | --- | --- |
-| AI-assisted artifact execution packets | Direct browser execution remains read-only, but Mtool can expose task packets that Codex / Claude read, explain, confirm, execute through CLI, validate, and report. | Route is documented; implementation would be a new scoped lane. |
+| Code-facing plugin interface | AI-facing plugin work is promoted as #970. Code-facing generator/runtime hooks may be useful later. | Requires a separate compatibility and safety scope; do not mix with AI-facing plugins. |
+| Shared-state sync AI plugin | Game content and game audio AI plugins now exist. Shared state sync could provide AI-facing room/state/event packet planning. | Keep it AI-facing only unless a separate runtime owner is selected. |
 | Shared-state sync runtime integration | Promoted as #952. Server/client input packets are ready; the next slice is a Node.js reference sample, not production runtime generation. | Must not silently include deployed Node.js ownership, SDK generation, SSO setup, token storage, dependency install, public port, Redis/pubsub, or guaranteed replay. |
 | External consumer concrete integration | Handoff readiness is documented. A concrete consumer could be selected next. | New scope only; avoid native project generation, dependency install, signing, or store submission by default. |
 | New domain/sample lane | A different sample or domain can be promoted if it better matches the next product goal. | Requires a fresh scope decision. |

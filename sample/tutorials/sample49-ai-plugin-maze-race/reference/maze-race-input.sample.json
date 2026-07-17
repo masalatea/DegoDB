@@ -1,0 +1,90 @@
+{
+  "schema_version": "ai_plugin_maze_race_input.v1",
+  "generated_by": {
+    "tool": "mtool",
+    "artifact": "ai_plugin_maze_race_input"
+  },
+  "sample": "sample49-ai-plugin-maze-race",
+  "source_inspiration": {
+    "corner_start_pattern": "sample43-tank-survival-game",
+    "scrolling_large_map_pattern": "sample47-open-world-rpg-demo",
+    "ai_plugin_content_root": "mtool/plugins/ai/domain.game-content/plugin.json"
+  },
+  "runtime_boundary": {
+    "owner": "local_node_sample_owner",
+    "mtool_responsibility": [
+      "provide structured sample rule packet",
+      "validate static runtime boundary",
+      "document AI-facing plugin relation"
+    ],
+    "external_runtime_responsibility": [
+      "own production multiplayer",
+      "own matchmaking",
+      "own anti-cheat",
+      "own production deployment"
+    ],
+    "nodejs_required": true,
+    "package_dependencies_required": false,
+    "external_assets_required": false,
+    "production_runtime_generated": false
+  },
+  "shared_state_mapping": {
+    "state_key": "maze_race",
+    "room_identifier": "url_room_slug",
+    "revision_required": true,
+    "fanout_scope": "room",
+    "transport": {
+      "primary": "sse_http",
+      "event": "maze.updated"
+    }
+  },
+  "game_rules": {
+    "maze": {
+      "columns": 35,
+      "rows": 35,
+      "cell_size": 48,
+      "scrolling_camera": true,
+      "goal": "center"
+    },
+    "racers": {
+      "count": 4,
+      "starts": [
+        "north_west",
+        "north_east",
+        "south_west",
+        "south_east"
+      ],
+      "player_start": "north_west"
+    },
+    "movement": {
+      "rotation_rate_degrees_per_second": 90,
+      "space_hold_behavior": "drive_forward_without_rotation",
+      "space_released_behavior": "rotate_in_place",
+      "reverse_allowed": false,
+      "strafe_allowed": false
+    },
+    "winner_policy": "first_racer_to_center_goal"
+  },
+  "validation": {
+    "required_checks": [
+      "static_files_exist",
+      "no_package_json",
+      "no_node_modules",
+      "four_corner_starts",
+      "center_goal",
+      "large_maze_with_scrolling",
+      "space_only_forward_rule",
+      "rotation_rate_90_degrees_per_second",
+      "opponents_use_same_rotate_or_drive_constraint",
+      "same_room_human_players_can_join",
+      "empty_slots_remain_ai_racers"
+    ]
+  },
+  "forbidden_actions": [
+    "install_dependencies",
+    "generate_game_engine_project",
+    "claim_production_multiplayer",
+    "claim_matchmaking_or_anticheat_support",
+    "publish_or_deploy"
+  ]
+}

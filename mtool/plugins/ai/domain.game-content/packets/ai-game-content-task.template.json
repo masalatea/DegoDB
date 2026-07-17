@@ -1,0 +1,43 @@
+{
+  "schema_version": "mtool_ai_plugin_task.v1",
+  "plugin_id": "domain.game-content",
+  "task_kind": "game_content_candidate",
+  "task_id": "<task-id>",
+  "authority": {
+    "task_json_wins_over_task_md": true,
+    "source_of_truth": "input/source.json",
+    "candidate_contract": "input/output-shape.json",
+    "plugin_manifest": "input/plugin.json",
+    "examples_are_advisory": true
+  },
+  "allowed_reads": [
+    "task.json",
+    "TASK.md",
+    "input/plugin.json",
+    "input/source.json",
+    "input/output-shape.json",
+    "input/examples.json",
+    "input/handoff-context.json"
+  ],
+  "allowed_writes": [
+    "output/candidate.json"
+  ],
+  "candidate_schema_version": "game_content_ai_candidate.v1",
+  "validation": {
+    "implemented": true,
+    "command": "php mtool/scripts/validate_ai_plugin_packet.php --plugin=input/plugin.json --task=task.json --candidate=output/candidate.json"
+  },
+  "confirmation_required": true,
+  "confirmation_prompt": "I will use the game-content AI plugin only as instructions and schemas, write only output/candidate.json, and perform no runtime execution, dependency install, project generation, build, publish, or deployment. Proceed with this specific task?",
+  "prohibited_actions": [
+    "runtime execution",
+    "dependency installation",
+    "Unity/Godot/native project generation",
+    "Mtool metadata mutation",
+    "database mutation",
+    "build",
+    "publish",
+    "deployment",
+    "asset licensing decisions"
+  ]
+}

@@ -1,0 +1,132 @@
+{
+  "schema_version": "game_audio_ai_candidate.v1",
+  "plugin_id": "domain.game-audio",
+  "candidate_id": "minimal-rpg-audio-candidate",
+  "audio_profile": {
+    "game_title": "Lantern Path",
+    "style": "quiet fantasy tutorial",
+    "default_music_policy": {
+      "loop": true,
+      "fade_ms": 1200,
+      "priority": 10
+    },
+    "default_sfx_policy": {
+      "max_overlap": 3,
+      "default_volume": 0.8
+    }
+  },
+  "music_cues": [
+    {
+      "id": "music_forest_path",
+      "label": "Forest Path Theme",
+      "mood": "calm exploration",
+      "policy": {
+        "loop": true,
+        "fade_ms": 1200,
+        "priority": 10
+      }
+    },
+    {
+      "id": "music_gate_light",
+      "label": "Gate Light Theme",
+      "mood": "small resolution",
+      "policy": {
+        "loop": true,
+        "fade_ms": 900,
+        "priority": 20
+      }
+    }
+  ],
+  "sfx_cues": [
+    {
+      "id": "sfx_step_stone",
+      "label": "Stone Step",
+      "category": "movement",
+      "policy": {
+        "max_overlap": 2,
+        "default_volume": 0.65
+      }
+    },
+    {
+      "id": "sfx_charm_found",
+      "label": "Charm Found",
+      "category": "item",
+      "policy": {
+        "max_overlap": 1,
+        "default_volume": 0.85
+      }
+    },
+    {
+      "id": "sfx_gate_open",
+      "label": "Gate Open",
+      "category": "world_event",
+      "policy": {
+        "max_overlap": 1,
+        "default_volume": 0.9
+      }
+    }
+  ],
+  "trigger_map": [
+    {
+      "id": "trigger_forest_entry_music",
+      "kind": "scene_enter_music",
+      "source_ref": "scene:forest_entry",
+      "cue_id": "music_forest_path"
+    },
+    {
+      "id": "trigger_gate_opening_music",
+      "kind": "scene_enter_music",
+      "source_ref": "scene:gate_opening",
+      "cue_id": "music_gate_light"
+    },
+    {
+      "id": "trigger_charm_found",
+      "kind": "event_sfx",
+      "source_ref": "event:lantern_charm_found",
+      "cue_id": "sfx_charm_found"
+    },
+    {
+      "id": "trigger_gate_open",
+      "kind": "event_sfx",
+      "source_ref": "event:sealed_gate_opened",
+      "cue_id": "sfx_gate_open"
+    }
+  ],
+  "runtime_handoff": {
+    "owner": "external_audio_runtime_owner",
+    "mtool_owned": [
+      "audio metadata candidate structure",
+      "cue and trigger vocabulary",
+      "review boundary",
+      "handoff notes"
+    ],
+    "external_audio_runtime_owned": [
+      "audio asset selection",
+      "license review",
+      "playback implementation",
+      "mixer policy implementation",
+      "engine-specific integration"
+    ],
+    "forbidden_without_explicit_artifact": [
+      "audio asset generation",
+      "asset licensing decisions",
+      "runtime playback implementation",
+      "dependency installation",
+      "engine project generation",
+      "publish or deployment"
+    ]
+  },
+  "validation_notes": [
+    "All trigger cue IDs point to declared music or SFX cues.",
+    "Scene refs are string refs for external runtime mapping; this plugin does not validate against a specific game-content packet yet.",
+    "No audio files, package dependencies, or engine project files are generated."
+  ],
+  "non_goals": [
+    "audio asset generation",
+    "asset licensing",
+    "runtime playback implementation",
+    "mixer implementation",
+    "engine project generation",
+    "publish or deployment"
+  ]
+}
